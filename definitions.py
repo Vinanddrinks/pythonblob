@@ -21,5 +21,4 @@ right = True
 WalkCount = 0
 
 fond = pygame.image.load('fond.jpg')
-perso = pygame.image.load('perso jeu.png')
-
+perso = pygame.image.load('perso jeu droite.png')

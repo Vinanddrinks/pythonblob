@@ -16,15 +16,17 @@ while run:
 
     if keys[pygame.K_LEFT] and x > vel:
         x -= vel
+        perso = pygame.image.load('perso jeu gauche.png')
     if keys[pygame.K_RIGHT] and x < 1210:
         x += vel
+        perso = pygame.image.load('perso jeu droite.png')
 
     if y >= 600:              #position du perso
         vely = 0              #si dans le sol => remonte a 600
         if y > 600:           #si sur sol vely=0 car pas de gravité
             y = 600
     else :
-        vely = min(vely + 4, 100)   #ajout de la gravité
+        vely = min(vely + 3, 100)   #ajout de la gravité
 
     if keys[pygame.K_SPACE]:
         vely = -20                  #saut sir space appuyé
@@ -34,6 +36,3 @@ while run:
     pygame.display.update()
 
 pygame.quit()
-
-
-
