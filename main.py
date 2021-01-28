@@ -1,6 +1,8 @@
 
 from definitions import*
 import pygame
+import random
+
 pygame.init()
 
 run = True
@@ -17,14 +19,17 @@ while run:
     if keys[pygame.K_LEFT] and x > vel:
         x -= vel
         perso = pygame.image.load('perso jeu gauche.png')
-    if keys[pygame.K_RIGHT] and x < 1210:
+    if keys[pygame.K_RIGHT] and x < 1120:
         x += vel
         perso = pygame.image.load('perso jeu droite.png')
+    
 
     if y >= 600:              #position du perso
         vely = 0              #si dans le sol => remonte a 600
         if y > 600:           #si sur sol vely=0 car pas de gravité
             y = 600
+        if y < 0:
+            y = 0
     else :
         vely = min(vely + 3, 100)   #ajout de la gravité
 
@@ -36,3 +41,15 @@ while run:
     pygame.display.update()
 
 pygame.quit()
+
+
+#trajectoire ennemie
+
+para = random.randint(-10, 30)
+
+if para >= -10:
+    neg = 1
+    if para < 0:
+        neg = -1
+y -= (para**2) * 0,5 * neg
+para -= 1
