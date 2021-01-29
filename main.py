@@ -28,13 +28,14 @@ while run:
         vely = 0              #si dans le sol => remonte a 600
         if y > 600:           #si sur sol vely=0 car pas de gravité
             y = 600
-        if y < 0:
-            y = 0
     else :
-        vely = min(vely + 3, 100)   #ajout de la gravité
+        if keys[pygame.K_DOWN]:
+            vely = min(vely + 10, 100) 
+        else :
+            vely = min(vely + 3, 100)      #ajout de la gravité
 
     if keys[pygame.K_SPACE]:
-        vely = -20                  #saut sir space appuyé
+        vely = -20                  #saut si espace appuyé
 
     window.blit(fond, (0, 0))
     window.blit(perso, (x, y))
