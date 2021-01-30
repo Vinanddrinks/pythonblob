@@ -20,7 +20,7 @@ def WindowRedraw():
     text = font.render('Score : ' + str(score), 1, (0, 0, 0))
     window.blit(text, (20, 20))
     window.blit(imageperso, (bud.x, bud.y))
-    window.blit(mechant, (para, y))
+    window.blit(mechant, (para, 600))
     pygame.display.update()
 
 def ScoreClock():
@@ -70,21 +70,18 @@ class perso:
     def moveup(self):
             self.vely = -20
 
-def EnnemyTrajectory():
+class enemy():
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.vel = vel
+        self.vely = vely
 
-    para = random.randint(-10, 30)
-
-    if para >= -10:
-        neg = 1
-        if para < 0:
-            neg = -1
-    y -= (para**2) * 0,5 * neg
 
 run = True
-
+para = random.randint(-10, 30)
 bud = perso(50, 400)
-imageperso = pygame.image.load('perso jeu droite.png')
-mechant = pygame.image.load('BouleCovid1.0.png')
+boulecovid = enemy(para, y)
 
 
 while run:
@@ -102,23 +99,20 @@ while run:
 
 
     keys = pygame.key.get_pressed()
-
+    
     if keys[pygame.K_SPACE]:
         bud.moveup()
-    EnnemyTrajectory()
+
+
+    para = int(random.randint(-10, 30))
+    if para >= -10:
+        neg = 1
+        if para < 0:
+            neg = -1
+    y = (para**2) * 0,5 * neg
+    
     ScoreClock()
     WindowRedraw()
 
 pygame.quit()
 
-#trajectoire ennemie
-
-def EnnemyTrajectory():
-
-    para = random.randint(-10, 30)
-
-    if para >= -10:
-        neg = 1
-        if para < 0:
-            neg = -1
-    y -= (para**2) * 0,5 * neg
