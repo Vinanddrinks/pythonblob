@@ -9,14 +9,26 @@ import time as t
 pygame.init()
 score = 0
 ScoreLat = 0
+
+font = pygame.font.SysFont('comicsans', 60, True)
+fond = pygame.image.load('fond.jpg')
+imageperso = pygame.image.load('perso jeu droite.png')
+mechant = pygame.image.load('BouleCovid1.0.png')
+
+def WindowRedraw():
+    window.blit(fond, (0, 0))
+    text = font.render('Score : ' + str(score), 1, (0, 0, 0))
+    window.blit(text, (20, 20))
+    window.blit(imageperso, (bud.x, bud.y))
+    window.blit(mechant, (para, y))
+    pygame.display.update()
+
 def ScoreClock():
     global ScoreLat
     global score
     if t.time()-ScoreLat >= 0.1: 
         ScoreLat = t.time()
         score += 1
-        print(score)
-
 
 class perso:
     def __init__(self, x, y):
@@ -50,16 +62,29 @@ class perso:
             if self.y > 600:           #si sur sol vely=0 car pas de gravité
                 self.y = 600
         else :
-            self.vely = min(self.vely + 3, 100)      #ajout de la gravité
+            if keys[pygame.K_DOWN]:
+                self.vely = min(self.vely + 10, 100)  
+            else:
+                self.vely = min(self.vely + 3, 100)     #ajout de la gravité
 
     def moveup(self):
             self.vely = -20
 
+def EnnemyTrajectory():
+
+    para = random.randint(-10, 30)
+
+    if para >= -10:
+        neg = 1
+        if para < 0:
+            neg = -1
+    y -= (para**2) * 0,5 * neg
 
 run = True
 
 bud = perso(50, 400)
 imageperso = pygame.image.load('perso jeu droite.png')
+mechant = pygame.image.load('BouleCovid1.0.png')
 
 
 while run:
@@ -80,23 +105,20 @@ while run:
 
     if keys[pygame.K_SPACE]:
         bud.moveup()
-
+    EnnemyTrajectory()
     ScoreClock()
-
-    window.blit(fond, (0, 0))
-    window.blit(imageperso, (bud.x, bud.y))
-    pygame.display.update()
+    WindowRedraw()
 
 pygame.quit()
 
-
 #trajectoire ennemie
 
-#para = random.randint(-10, 30)
+def EnnemyTrajectory():
 
-#if para >= -10:
-#    neg = 1
-#    if para < 0:
-#        neg = -1
-#y -= (para**2) * 0,5 * neg
-#para -= 1
+    para = random.randint(-10, 30)
+
+    if para >= -10:
+        neg = 1
+        if para < 0:
+            neg = -1
+    y -= (para**2) * 0,5 * neg
