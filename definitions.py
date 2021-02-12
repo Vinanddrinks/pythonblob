@@ -1,6 +1,6 @@
 import pygame
 
-window = pygame.display.set_mode((1280, 720))
+window = pygame.display.set_mode((1280, 700))
 pygame.display.set_caption("Protect little Bud")
 
 # pour le perso
