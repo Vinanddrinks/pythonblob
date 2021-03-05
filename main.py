@@ -9,7 +9,7 @@ import time as t
 pygame.init()
 score = 0
 ScoreLat = 0
-
+evil = enemies()
 font = pygame.font.SysFont('comicsans', 60, True)
 fond = pygame.image.load('fond.jpg')
 imageperso = pygame.image.load('perso jeu droite.png')
@@ -21,7 +21,7 @@ def WindowRedraw():
     text = font.render('Score : ' + str(score), 1, (0, 0, 0))
     window.blit(text, (20, 20))
     window.blit(imageperso, (bud.x, bud.y))
-    #window.blit(mechant, (moove, 600))
+    window.blit(mechant, (evil.x,evil.y))
     pygame.display.update()
 
 def ScoreClock():
@@ -71,21 +71,11 @@ class perso:
     def moveup(self):
             self.vely = -20
 
-class enemy():
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-        self.vel = vel
-        self.vely = vely
          
 run = True
 para = random.randint(-10, 30)
 bud = perso(50, 400)
 
-def MooveEnnemy(para):
-
-    moove = para**2 + para
-    window.blit(mechant, (moove, 600))
     
 
 while run:
@@ -94,7 +84,7 @@ while run:
        if event.type == pygame.QUIT:
            run = False
 
-    MooveEnnemy(para)
+    evil.trajectory()
 
     bud.MouvementLoop()
     if bud.left:
