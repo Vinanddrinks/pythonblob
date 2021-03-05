@@ -15,12 +15,13 @@ fond = pygame.image.load('fond.jpg')
 imageperso = pygame.image.load('perso jeu droite.png')
 mechant = pygame.image.load('BouleCovid1.0.png')
 
+
 def WindowRedraw():
     window.blit(fond, (0, 0))
     text = font.render('Score : ' + str(score), 1, (0, 0, 0))
     window.blit(text, (20, 20))
     window.blit(imageperso, (bud.x, bud.y))
-    #window.blit(mechant, (para, 600))
+    #window.blit(mechant, (moove, 600))
     pygame.display.update()
 
 def ScoreClock():
@@ -76,18 +77,24 @@ class enemy():
         self.y = y
         self.vel = vel
         self.vely = vely
-
-
+         
 run = True
 para = random.randint(-10, 30)
 bud = perso(50, 400)
 
+def MooveEnnemy(para):
+
+    moove = para**2 + para
+    window.blit(mechant, (moove, 600))
+    
 
 while run:
     pygame.time.delay(27)
     for event in pygame.event.get():
        if event.type == pygame.QUIT:
            run = False
+
+    MooveEnnemy(para)
 
     bud.MouvementLoop()
     if bud.left:
