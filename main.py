@@ -98,7 +98,7 @@ while run:
     
     if keys[pygame.K_SPACE]:
         bud.moveup()
-    
+
     ScoreClock()
     WindowRedraw()
 

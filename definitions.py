@@ -15,9 +15,9 @@ vely = 0 #gravité
 
 class enemies:
     def __init__(self):
-        self.vi = random.randint(10,50)
+        self.vi = random.randint(20,50)
         self.height = random.randint(20,600)
-        self.ang = random.randint(90,120)
+        self.ang = random.randint(500,1000)
         self.size = random.randint(1,20)/10
         self.type = random.randint(1,3)
         self.x = 0.0
