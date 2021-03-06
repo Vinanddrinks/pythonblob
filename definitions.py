@@ -1,6 +1,10 @@
+from main import*
+from classes import*
+
 import pygame
 import random
 import numpy
+import time as t
 
 window = pygame.display.set_mode((1280, 700))
 pygame.display.set_caption("Protect little Bud")
@@ -12,6 +16,13 @@ width = 136
 height = 96
 vel = 15 #vitesse
 vely = 0 #gravité
+
+def ScoreClock():
+    global ScoreLat
+    global score
+    if t.time()-ScoreLat >= 0.1:
+        ScoreLat = t.time()
+        score += 1
 
 class enemies:
     def __init__(self):
@@ -27,11 +38,20 @@ class enemies:
         self.x = self.vi*numpy.cos(self.ang)*self.t
         self.y = 1*(((self.t**2))/2) + self.vi* numpy.sin(self.ang) + self.height 
         self.t +=1
-         
+
+    def Difficulty(self):
+        if score > 1000 :
+            self.vi = random.radint(30, 60)
 
 
-        
 
+def WindowRedraw():
+    window.blit(fond, (0, 0))
+    text = font.render('Score : ' + str(score), 1, (0, 0, 0))
+    window.blit(text, (20, 20))
+    window.blit(imageperso, (bud.x, bud.y))
+    window.blit(mechant, (evil.x,evil.y))
+    pygame.display.update()
 
 # Pour les images
 left = False
