@@ -1,6 +1,6 @@
 # Python Blob V2#
 # description : main executable for pythonblob  project, containing all the pygame  executive code
-# Authors : Vincent, Joseph
+# Authors : Vincent, Joseph.
 
 #importation
 import pygame as pg 
