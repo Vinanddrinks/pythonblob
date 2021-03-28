@@ -4,7 +4,7 @@
 
 #importation
 import pygame as pg 
-import numpy
+from numpy import *
 import time as t
 #end-importation
 
@@ -23,6 +23,7 @@ while run == True:
            run = False
     window.blit(fond,(0,0))
     pg.time.delay(60)
+    window.blit(fond,(0,0))
     pg.display.update()
 pg.quit()
 # END
