@@ -14,7 +14,7 @@ from Classes import *
 pg.init()
 #declaration
 fond = pg.image.load('fond.jpg')
-window = pg.display.set_mode((1920, 1080))
+window = pg.display.set_mode((1280, 720))
 pg.display.set_caption("Protect PyBlob") 
 imageperso = pg.image.load('perso jeu droite.png')
 blob = player_entity()
