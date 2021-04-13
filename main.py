@@ -7,6 +7,7 @@ import pygame as pg
 from numpy import *
 import time as t
 from Classes import *
+from functions import *
 #end-importation
 
 
@@ -14,6 +15,8 @@ from Classes import *
 pg.init()
 #declaration
 fond = pg.image.load('fond.jpg')
+font = pg.font.SysFont('comicsans', 30, True)
+text = font.render('Score : ', score, 1, (0, 0, 0))
 keys = pg.key.get_pressed()
 window = pg.display.set_mode((1280, 720))
 pg.display.set_caption("Protect PyBlob") 
@@ -29,10 +32,8 @@ while run == True:
        if event.type == pg.QUIT:
            run = False
     
-    window.blit(fond,(0,0))
     blob.mouvement()
     blob.moveup()
-    window.blit(imageperso, (blob.x, blob.y))
-    pg.display.update()
+    GameWindow()
 pg.quit()
 # END
