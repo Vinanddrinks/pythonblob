@@ -7,7 +7,6 @@ import pygame as pg
 import numpy as n
 import time as t
 import random as r
-from functions import *
 # End-importation
 
 #Begin
@@ -51,7 +50,7 @@ class player_entity:
             self.left = True
             self.right = False
 
-        elif keys[pg.K_RIGHT] and self.x < 1100:
+        elif keys[pg.K_RIGHT] and self.x < 1130:
             self.x += self.vel
             self.left = False
             self.right = True
@@ -71,7 +70,10 @@ class player_entity:
 
     def moveup(self):
         keys = pg.key.get_pressed()
+        if self.vely > 720:
+            self.vely = 720
+
         if keys[pg.K_SPACE]:
-            self.vely = -30
+            self.vely = -20
 
 #End
