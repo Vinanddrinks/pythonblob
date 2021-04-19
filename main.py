@@ -12,6 +12,7 @@ from Classes import *
 
 # BEGIN
 pg.init()
+clock = pg.time.Clock()
 #declaration
 fond = pg.image.load('fond.jpg')
 #font = pg.font.SysFont('comicsans', 30, True)

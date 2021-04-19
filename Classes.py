@@ -171,10 +171,11 @@ class player_entity:
                         elif keys[pg.K_RIGHT] and self.x < 1100:
                             self.image = self.sprites2_right[int(self.current_sprite)]
 
-                Jump = True
-                self.current_sprite = 0
+                    self.current_sprite += 0,25
 
     def actualiseSprites(self):
-        imageperso = self.image.get_rect()
+        global imageperso
+        imageperso = self.image
+        
 
 #End
