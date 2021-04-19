@@ -7,7 +7,6 @@ import pygame as pg
 import numpy as n
 import time as t
 import random as r
-import os
 from functions import *
 # End-importation
 
@@ -31,74 +30,67 @@ class player_entity:
         self.bonus = 0
 
         #all sprites
+        self.sprites0_right = []
+        self.sprites0_left = []
         self.sprites1_right = []
         self.sprites1_left = []
         self.sprites2_right = []
         self.sprites2_left = []
         self.sprites3_right = []
         self.sprites3_left = []
-        self.sprites4 = []
         
-        #SPRITE 1
-        self.sprites1_right.append(pg.image.load(os.path.join('saut slime normal droit', 'saut_normal_droit_0.png')).convert())
-        self.sprites1_right.append(pg.image.load(os.path.join('saut slime normal droit', 'saut_normal_droit_1.png')).convert())
-        self.sprites1_right.append(pg.image.load(os.path.join('saut slime normal droit', 'saut_normal_droit_2.png')).convert())
-        self.sprites1_right.append(pg.image.load(os.path.join('saut slime normal droit', 'saut_normal_droit_3.png')).convert())
-        self.sprites1_right.append(pg.image.load(os.path.join('saut slime normal droit', 'saut_normal_droit_4.png')).convert())
-        self.sprites1_right.append(pg.image.load(os.path.join('saut slime normal droit', 'saut_normal_droit_5.png')).convert())
+        #SPRITE 0 ( normal )
+        self.sprites0_right.append(pg.image.load('resources/saut_normal_droit_0.png').convert())
+        self.sprites0_right.append(pg.image.load('resources/saut_normal_droit_1.png').convert())
+        self.sprites0_right.append(pg.image.load('resources/saut_normal_droit_2.png').convert())
+        self.sprites0_right.append(pg.image.load('resources/saut_normal_droit_3.png').convert())
+        self.sprites0_right.append(pg.image.load('resources/saut_normal_droit_4.png').convert())
+        self.sprites0_right.append(pg.image.load('resources/saut_normal_droit_5.png').convert())
 
-        self.sprites1_left.append(pg.image.load('resources\normal\saut slime normal gauche\saut_normal_gauche_0.png').convert())
-        self.sprites1_left.append(pg.image.load('resources\normal\saut slime normal gauche\saut_normal_gauche_1.png').convert())
-        self.sprites1_left.append(pg.image.load('resources\normal\saut slime normal gauche\saut_normal_gauche_2.png').convert())
-        self.sprites1_left.append(pg.image.load('resources\normal\saut slime normal gauche\saut_normal_gauche_3.png').convert())
-        self.sprites1_left.append(pg.image.load('resources\normal\saut slime normal gauche\saut_normal_gauche_4.png').convert())
-        self.sprites1_left.append(pg.image.load('resources\normal\saut slime normal gauche\saut_normal_gauche_5.png').convert())
+        self.sprites0_left.append(pg.image.load('resources/saut_normal_gauche_0.png').convert())
+        self.sprites0_left.append(pg.image.load('resources/saut_normal_gauche_1.png').convert())
+        self.sprites0_left.append(pg.image.load('resources/saut_normal_gauche_2.png').convert())
+        self.sprites0_left.append(pg.image.load('resources/saut_normal_gauche_3.png').convert())
+        self.sprites0_left.append(pg.image.load('resources/saut_normal_gauche_4.png').convert())
+        self.sprites0_left.append(pg.image.load('resources/saut_normal_gauche_5.png').convert())
+
+        #SPRITE 1
+        self.sprites1_right.append(pg.image.load('resources/saut_stade1_droit_0.png').convert())
+        self.sprites1_right.append(pg.image.load('resources/saut_stade1_droit_1.png').convert())
+        self.sprites1_right.append(pg.image.load('resources/saut_stade1_droit_2.png').convert())
+        self.sprites1_right.append(pg.image.load('resources/saut_stade1_droit_3.png').convert())
+        self.sprites1_right.append(pg.image.load('resources/saut_stade1_droit_4.png').convert())
+        self.sprites1_right.append(pg.image.load('resources/saut_stade1_droit_5.png').convert())
+
+        self.sprites1_left.append(pg.image.load('resources/saut_stade1_gauche_0.png').convert())
+        self.sprites1_left.append(pg.image.load('resources/saut_stade1_gauche_1.png').convert())
+        self.sprites1_left.append(pg.image.load('resources/saut_stade1_gauche_2.png').convert())
+        self.sprites1_left.append(pg.image.load('resources/saut_stade1_gauche_3.png').convert())
+        self.sprites1_left.append(pg.image.load('resources/saut_stade1_gauche_4.png').convert())
+        self.sprites1_left.append(pg.image.load('resources/saut_stade1_gauche_5.png').convert())
 
         #SPRITE 2
-        self.sprites2_right.append(pg.image.load('resources\stade1\saut slime stade 1 droit\saut_stade1_droit_0.png').convert())
-        self.sprites2_right.append(pg.image.load('resources\stade1\saut slime stade 1 droit\saut_stade1_droit_1.png').convert())
-        self.sprites2_right.append(pg.image.load('resources\stade1\saut slime stade 1 droit\saut_stade1_droit_2.png').convert())
-        self.sprites2_right.append(pg.image.load('resources\stade1\saut slime stade 1 droit\saut_stade1_droit_3.png').convert())
-        self.sprites2_right.append(pg.image.load('resources\stade1\saut slime stade 1 droit\saut_stade1_droit_4.png').convert())
-        self.sprites2_right.append(pg.image.load('resources\stade1\saut slime stade 1 droit\saut_stade1_droit_5.png').convert())
+        self.sprites2_right.append(pg.image.load('resources/saut_stade2_droit_0.png').convert())
+        self.sprites2_right.append(pg.image.load('resources/saut_stade2_droit_1.png').convert())
+        self.sprites2_right.append(pg.image.load('resources/saut_stade2_droit_2.png').convert())
+        self.sprites2_right.append(pg.image.load('resources/saut_stade2_droit_3.png').convert())
+        self.sprites2_right.append(pg.image.load('resources/saut_stade2_droit_4.png').convert())
+        self.sprites2_right.append(pg.image.load('resources/saut_stade2_droit_5.png').convert())
 
-        self.sprites2_left.append(pg.image.load('resources\stade1\saut slime stade 1 gauche\saut_stade1_gauche_0.png').convert())
-        self.sprites2_left.append(pg.image.load('resources\stade1\saut slime stade 1 gauche\saut_stade1_gauche_1.png').convert())
-        self.sprites2_left.append(pg.image.load('resources\stade1\saut slime stade 1 gauche\saut_stade1_gauche_2.png').convert())
-        self.sprites2_left.append(pg.image.load('resources\stade1\saut slime stade 1 gauche\saut_stade1_gauche_3.png').convert())
-        self.sprites2_left.append(pg.image.load('resources\stade1\saut slime stade 1 gauche\saut_stade1_gauche_4.png').convert())
-        self.sprites2_left.append(pg.image.load('resources\stade1\saut slime stade 1 gauche\saut_stade1_gauche_5.png').convert())
+        self.sprites2_left.append(pg.image.load('resources/saut_stade2_gauche_0.png').convert())
+        self.sprites2_left.append(pg.image.load('resources/saut_stade2_gauche_1.png').convert())
+        self.sprites2_left.append(pg.image.load('resources/saut_stade2_gauche_2.png').convert())
+        self.sprites2_left.append(pg.image.load('resources/saut_stade2_gauche_3.png').convert())
+        self.sprites2_left.append(pg.image.load('resources/saut_stade2_gauche_4.png').convert())
+        self.sprites2_left.append(pg.image.load('resources/saut_stade2_gauche_5.png').convert())
 
-        #SPRITE 3
-        self.sprites3_right.append(pg.image.load('resources\stade2\saut slime stade 2 droit\saut_stade2_droit_0.png').convert())
-        self.sprites3_right.append(pg.image.load('resources\stade2\saut slime stade 2 droit\saut_stade2_droit_1.png').convert())
-        self.sprites3_right.append(pg.image.load('resources\stade2\saut slime stade 2 droit\saut_stade2_droit_2.png').convert())
-        self.sprites3_right.append(pg.image.load('resources\stade2\saut slime stade 2 droit\saut_stade2_droit_3.png').convert())
-        self.sprites3_right.append(pg.image.load('resources\stade2\saut slime stade 2 droit\saut_stade2_droit_4.png').convert())
-        self.sprites3_right.append(pg.image.load('resources\stade2\saut slime stade 2 droit\saut_stade2_droit_5.png').convert())
-
-        self.sprites3_left.append(pg.image.load('resources\stade2\saut slime stade 2 gauche\saut_stade2_gauche_0.png').convert())
-        self.sprites3_left.append(pg.image.load('resources\stade2\saut slime stade 2 gauche\saut_stade2_gauche_1.png').convert())
-        self.sprites3_left.append(pg.image.load('resources\stade2\saut slime stade 2 gauche\saut_stade2_gauche_2.png').convert())
-        self.sprites3_left.append(pg.image.load('resources\stade2\saut slime stade 2 gauche\saut_stade2_gauche_3.png').convert())
-        self.sprites3_left.append(pg.image.load('resources\stade2\saut slime stade 2 gauche\saut_stade2_gauche_4.png').convert())
-        self.sprites3_left.append(pg.image.load('resources\stade2\saut slime stade 2 gauche\saut_stade2_gauche_5.png').convert())
-
-        #SPRITE 4
-        self.sprites4.append(pg.image.load('resources\mort\mort1.png').convert())
-        self.sprites4.append(pg.image.load('resources\mort\mort2.png').convert())
+        #SPRITE 3 ( mort )
+        self.sprites3_right.append(pg.image.load('resources/mort2.png').convert())
+        self.sprites3_left.append(pg.image.load('resources/mort1.png').convert())
 
         #infos about blob sprites management
+        
         self.current_sprite = 0
-        if self.health == 3 :
-            self.image = self.sprites1[self.current_sprite]
-        if self.health == 2 :
-            self.image = self.sprites2[self.current_sprite]
-        if self.health == 1 :
-            self.image = self.sprites3[self.current_sprite]
-        if self.health == 0 :
-            self.image = self.sprites4[self.current_sprite]
-
     
     #def jump(self):
         #if self.right:
@@ -111,7 +103,6 @@ class player_entity:
         #if self.y <= 20:
             #self.y = 20
 
-    
     def mouvement(self):
         self.y += self.vely  #gerer les déplacements y
         keys = pg.key.get_pressed()
@@ -122,11 +113,29 @@ class player_entity:
             self.left = True
             self.right = False
 
+            if self.health == 3 :
+                self.image = self.sprites0_left[self.current_sprite]
+            if self.health == 2 :
+                self.image = self.sprites1_left[self.current_sprite]
+            if self.health == 1 :
+                self.image = self.sprites2_left[self.current_sprite]
+            if self.health == 0 :
+                self.image = self.sprites3_left[self.current_sprite]
+
 
         elif keys[pg.K_RIGHT] and self.x < 1100:
             self.x += self.vel
             self.left = False
             self.right = True
+
+            if self.health == 3 :
+                self.image = self.sprites0_right[self.current_sprite]
+            if self.health == 2 :
+                self.image = self.sprites1_right[self.current_sprite]
+            if self.health == 1 :
+                self.image = self.sprites2_right[self.current_sprite]
+            if self.health == 0 :
+                self.image = self.sprites3_right[self.current_sprite]
 
         #elif keys[pg.K_SPACE]:
             #self.vely = -20
