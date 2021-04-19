@@ -103,6 +103,8 @@ class player_entity:
         #if self.y <= 20:
             #self.y = 20
 
+    global imageperso
+
     def mouvement(self):
         self.y += self.vely  #gerer les déplacements y
         keys = pg.key.get_pressed()
@@ -116,10 +118,13 @@ class player_entity:
             if self.current_sprite == 0 :
                 if self.health == 3 :
                     self.image = self.sprites0_left[int(self.current_sprite)]
+                    imageperso = self.image
                 if self.health == 2 :
-                    self.image = self.sprites1_left[int(self.current_sprite)]
+                    self.image = self.sprites0_left[int(self.current_sprite)]
+                    imageperso = self.image
                 if self.health == 1 :
-                    self.image = self.sprites2_left[int(self.current_sprite)]
+                    self.image = self.sprites0_left[int(self.current_sprite)]
+                    
 
 
         elif keys[pg.K_RIGHT] and self.x < 1100:
@@ -130,10 +135,13 @@ class player_entity:
             if self.current_sprite == 0 :
                 if self.health == 3 :
                     self.image = self.sprites0_right[int(self.current_sprite)]
+                    imageperso = self.image
                 if self.health == 2 :
                     self.image = self.sprites1_right[int(self.current_sprite)]
+                    imageperso = self.image
                 if self.health == 1 :
                     self.image = self.sprites2_right[int(self.current_sprite)]
+                    imageperso = self.image
 
 
         if self.y >= 600:              #position du perso
@@ -158,22 +166,27 @@ class player_entity:
                     if self.health == 3 :
                         if keys[pg.K_LEFT] and self.x > self.vel :
                             self.image = self.sprites0_left[int(self.current_sprite)]
+                            imageperso = self.image
                         elif keys[pg.K_RIGHT] and self.x < 1100:
                             self.image = self.sprites0_right[int(self.current_sprite)]
+                            imageperso = self.image
                     elif self.health == 2 :
                         if keys[pg.K_LEFT] and self.x > self.vel :
                             self.image = self.sprites1_left[int(self.current_sprite)]
+                            imageperso = self.image
                         elif keys[pg.K_RIGHT] and self.x < 1100:
                             self.image = self.sprites1_right[int(self.current_sprite)]
+                            imageperso = self.image
                     elif self.health == 1 :
                         if keys[pg.K_LEFT] and self.x > self.vel :
                             self.image = self.sprites2_left[int(self.current_sprite)]
+                            imageperso = self.image
                         elif keys[pg.K_RIGHT] and self.x < 1100:
                             self.image = self.sprites2_right[int(self.current_sprite)]
+                            imageperso = self.image
 
 
     def actualiseSprites(self):
-        global imageperso
         imageperso = self.image
         
 

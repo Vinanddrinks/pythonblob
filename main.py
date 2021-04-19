@@ -35,7 +35,6 @@ while run == True:
     
     blob.mouvement()
     blob.moveup()
-    blob.actualiseSprites()
     
     window.blit(fond,(0,0))
     window.blit(imageperso, (blob.x, blob.y))
