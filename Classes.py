@@ -127,7 +127,7 @@ class player_entity:
                     
 
 
-        elif keys[pg.K_RIGHT] and self.x < 1100:
+        elif keys[pg.K_RIGHT] and self.x < 1150:
             self.x += self.vel
             self.left = False
             self.right = True
