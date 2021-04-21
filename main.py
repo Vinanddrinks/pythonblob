@@ -11,8 +11,10 @@ from Classes import *
 
 
 # BEGIN
+#pygame initialisation
 pg.init()
 clock = pg.time.Clock()
+#end pg initialisation
 #declaration
 fond = pg.image.load('fond.jpg')
 #font = pg.font.SysFont('comicsans', 30, True)
@@ -24,6 +26,8 @@ imageperso = pg.image.load('perso jeu droite.png')
 blob = player_entity(40, 400)
 run = True
 score = 0
+testcovid = ennemy()
+r = pg.image.load('resources/covidtest.png')
 #end_declaration
 
 
@@ -35,9 +39,10 @@ while run == True:
     
     blob.mouvement()
     blob.moveup()
+    testcovid.trajectory()
     print('blob x :',blob.x,' blob y:',blob.y)
-    
     window.blit(fond,(0,0))
+    window.blit(r,(testcovid.x,testcovid.y))
     window.blit(imageperso, (blob.x, blob.y))
     pg.display.update()
 pg.quit()
