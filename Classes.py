@@ -1,6 +1,6 @@
 # Python Blob V2#
 # description : main ressource file for the project classes 
-# Authors : Vincent, Joseph
+# Authors : Vincent, Joseph, Hugo
 
 # importation
 import pygame as pg
@@ -8,6 +8,7 @@ import numpy as n
 import time as t
 import random as r
 from functions import *
+import os
 # End-importation
 
 #Begin
@@ -22,8 +23,7 @@ class player_entity:
         self.vely = 0
         self.right = False
         self.left = True
-        self.Vi = 10
-        self.Ang = 398503743
+        
         
         #status
         self.health = 3
@@ -188,6 +188,13 @@ class player_entity:
 
     def actualiseSprites(self):
         imageperso = self.image
-        
+
+#Fin classe joueur
+
+class ennemy:
+    def __init__(self):
+        #variables initialisation
+        if r.random() == 0:
+            self.x = 1160
 
 #End

@@ -35,6 +35,7 @@ while run == True:
     
     blob.mouvement()
     blob.moveup()
+    print('blob x :',blob.x,' blob y:',blob.y)
     
     window.blit(fond,(0,0))
     window.blit(imageperso, (blob.x, blob.y))
