@@ -197,10 +197,10 @@ class ennemy:
         self.sprite = pg.image.load('resources/covidtest.png')
         if r.random() == 0:
             self.x = 1160
-            self.theta = n.radians(r.randint(-180,0))
+            self.theta = n.radians(r.randint(0,180))
         else:
             self.x = 0
-            self.theta = n.radians(r.randint(0,180))
+            self.theta = n.radians(r.randint(-180,0))
         self.xi = self.x
         self.y = r.randint(0,300)
         self.init_height = self.y
