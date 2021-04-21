@@ -19,7 +19,7 @@ class player_entity:
         self.t = 0
         self.x = x
         self.y = y
-        self.vel = 15
+        self.vel = 10
         self.vely = 0
         self.right = False
         self.left = True
@@ -150,16 +150,16 @@ class player_entity:
                 self.y = 600
         else :
             if keys[pg.K_DOWN]:
-                self.vely = min(self.vely + 10, 100)
+                self.vely = min(self.vely + 5, 100)
             else:
-                self.vely = min(self.vely + 3, 100)     #ajout de la gravité
+                self.vely = min(self.vely + 1, 100)     #ajout de la gravité
 
     def moveup(self):
         Jump = True
         keys = pg.key.get_pressed()
         if keys[pg.K_SPACE]:
             if Jump == True:
-                self.vely = -30
+                self.vely = -15
 
                 Jump = False
                 for i in range(24):
