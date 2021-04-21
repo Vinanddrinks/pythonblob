@@ -27,12 +27,11 @@ blob = player_entity(40, 400)
 run = True
 score = 0
 testcovid = ennemy()
-r = pg.image.load('resources/covidtest.png')
 #end_declaration
 
 
 while run == True:
-    pg.time.delay(30)
+    pg.time.delay(16)
     for event in pg.event.get():
        if event.type == pg.QUIT:
            run = False
@@ -42,7 +41,7 @@ while run == True:
     testcovid.trajectory()
     print('blob x :',blob.x,' blob y:',blob.y)
     window.blit(fond,(0,0))
-    window.blit(r,(testcovid.x,testcovid.y))
+    window.blit(testcovid.sprite,(testcovid.x,testcovid.y))
     window.blit(imageperso, (blob.x, blob.y))
     pg.display.update()
 pg.quit()
