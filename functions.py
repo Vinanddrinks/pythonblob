@@ -10,16 +10,17 @@ import random as r
 # End-importation
 
 # Variables
-score = 0
+
+test = 0
 ScoreLat = 0
 
 # End - Variable
 
 def SpreadTime():
-    global score
+    global test
     global ScoreLat
     if t.time() - ScoreLat >= 0.1:
         ScoreLat = t.time()
         score += 1
-        print(score)
+    print(score)
     

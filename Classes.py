@@ -114,6 +114,7 @@ class player_entity:
             self.x -= self.vel
             self.left = True
             self.right = False
+            imageperso = pg.image.load('resources/saut_normal_gauche_0.png')
             
             if self.current_sprite == 0 :
                 if self.health == 3 :
@@ -188,6 +189,11 @@ class player_entity:
 
     def actualiseSprites(self):
         imageperso = self.image
+    
+    def HealthBar(self):
+
+        if self.health == 3:
+            life = pg.image.load('resources/saut_normal_droit_0.png')
 
 #Fin classe joueur
 

@@ -20,16 +20,21 @@ clock = pg.time.Clock()
 
 
 #declaration
+score = 0
 fond = pg.image.load('resources/fond.jpg')
 font = pg.font.SysFont('comicsans', 50, True)
-Markscore = font.render('Score : ' + str(score), 1, (0, 0, 255))
+text = font.render('Score : ' + str(score), 1, (0, 0, 255))
 keys = pg.key.get_pressed()
 window = pg.display.set_mode((1280, 720))
 pg.display.set_caption("Protect PyBlob") 
 imageperso = pg.image.load('resources/saut_normal_droit_0.png')
+life = pg.image.load('resources/heart.png')
+life2 = pg.image.load('resources/heart.png')
+life3 = pg.image.load('resources/heart.png')
 blob = player_entity(40, 400)
 run = True
 testcovid = ennemy()
+
 #end_declaration
 
 # Def Update (don't touch !)
@@ -37,7 +42,10 @@ def WindowUpdate():
     window.blit(fond,(0,0))
     window.blit(testcovid.sprite,(testcovid.x,testcovid.y))
     window.blit(imageperso, (blob.x, blob.y))
-    window.blit(Markscore, (30, 30) )
+    window.blit(text, (1070, 30) )
+    window.blit(life, (30, 30))
+    window.blit(life2, (60, 30))
+    window.blit(life3, (90, 30))
 # End def Update
 
 
@@ -49,12 +57,14 @@ while run == True:
     
     blob.mouvement()
     blob.moveup()
+    blob.HealthBar()
     testcovid.trajectory()
     print('blob x :',blob.x,' blob y:',blob.y)
-    SpreadTime()
-    print(score)
+    print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
     WindowUpdate()
     pg.display.update()
+    score += 1
+    print(score)
     
 
 pg.quit()
