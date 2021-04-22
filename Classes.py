@@ -117,8 +117,8 @@ class player_entity:
             
             if self.current_sprite == 0 :
                 if self.health == 3 :
-                    self.image = self.sprites0_left[int(self.current_sprite)]
-                    imageperso = self.image
+                    imageperso = pg.image.load('resources/saut_normal_gauche_0.png')
+                
                 if self.health == 2 :
                     self.image = self.sprites0_left[int(self.current_sprite)]
                     imageperso = self.image
@@ -144,10 +144,10 @@ class player_entity:
                     imageperso = self.image
 
 
-        if self.y >= 600:              #position du perso
+        if self.y >= 500:              #position du perso
             self.vely = 0              #si dans le sol => remonte a 600
-            if self.y > 600:           #si sur sol vely=0 car pas de gravité
-                self.y = 600
+            if self.y > 500:           #si sur sol vely=0 car pas de gravité
+                self.y = 500
         else :
             if keys[pg.K_DOWN]:
                 self.vely = min(self.vely + 5, 100)

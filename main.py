@@ -20,13 +20,13 @@ clock = pg.time.Clock()
 
 
 #declaration
-fond = pg.image.load('fond.jpg')
+fond = pg.image.load('resources/fond.jpg')
 font = pg.font.SysFont('comicsans', 50, True)
 Markscore = font.render('Score : ' + str(score), 1, (0, 0, 255))
 keys = pg.key.get_pressed()
 window = pg.display.set_mode((1280, 720))
 pg.display.set_caption("Protect PyBlob") 
-imageperso = pg.image.load('perso jeu droite.png')
+imageperso = pg.image.load('resources/saut_normal_droit_0.png')
 blob = player_entity(40, 400)
 run = True
 testcovid = ennemy()
