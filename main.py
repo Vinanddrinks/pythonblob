@@ -43,9 +43,16 @@ def WindowUpdate():
     window.blit(testcovid.sprite,(testcovid.x,testcovid.y))
     window.blit(imageperso, (blob.x, blob.y))
     window.blit(text, (1070, 30) )
-    window.blit(life, (30, 30))
-    window.blit(life2, (60, 30))
-    window.blit(life3, (90, 30))
+    if blob.health == 3:
+        window.blit(life, (30, 30))
+        window.blit(life2, (60, 30))
+        window.blit(life3, (90, 30))
+    elif blob.health == 2:
+        window.blit(life, (30, 30))
+        window.blit(life2, (60, 30))
+    else:
+        window.blit(life, (30, 30))
+
 # End def Update
 
 
