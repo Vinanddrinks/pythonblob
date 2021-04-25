@@ -53,7 +53,7 @@ def WindowUpdate():
         window.blit(life, (30, 30))
 
 # End def Update
-
+    
 
 while run == True:
     pg.time.delay(16)
@@ -62,6 +62,7 @@ while run == True:
            run = False
     
     blob.mouvement()
+    blob.saut()
     blob.moveup()
     blob.HealthBar()
     testcovid.trajectory()
