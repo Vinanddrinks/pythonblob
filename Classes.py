@@ -91,17 +91,6 @@ class player_entity:
         #infos about blob sprites management
         self.image = self.sprites0_right[0]
         self.current_sprite = 0
-    
-    #def jump(self):
-        #if self.right:
-            #self.Ang = 60
-        #else:
-            #self.ang = 120
-        #self.x = self.Vi*n.cos(self.Ang)*self.t
-        #self.y = 1*(((self.t**2))/2) + self.Vi* n.sin(self.Ang) + self.x
-        #self.t +=1
-        #if self.y <= 20:
-            #self.y = 20
 
     global imageperso
 
@@ -160,7 +149,7 @@ class player_entity:
         keys = pg.key.get_pressed()
         if keys[pg.K_SPACE]:
             if Jump == True:
-                self.vely = -15
+                self.vely = -12
 
                 Jump = False
                 for i in range(24):
