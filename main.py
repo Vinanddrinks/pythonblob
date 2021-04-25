@@ -64,19 +64,14 @@ while run == True:
     
     blob.mouvement()
     blob.saut()
-    if t.time() - jumpspam > 2 :
-        blob.moveup()
-        if t.time() - jumpspam > 4 :
-            jumpspam = t.time()
+    blob.moveup()
 
     blob.HealthBar()
     testcovid.trajectory()
-    #print('blob x :',blob.x,' blob y:',blob.y)
-    #print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
+    print('blob x :',blob.x,' blob y:',blob.y)
+    print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
     WindowUpdate()
     pg.display.update()
-    print(jumpspam)
-    print(t.time())
     
 
 pg.quit()
