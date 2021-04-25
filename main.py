@@ -33,7 +33,7 @@ life3 = pg.image.load('resources/heart.png')
 blob = player_entity(40, 400)
 run = True
 testcovid = ennemy()
-
+jumpspam = 0
 #end_declaration
 
 # Def Update (don't touch !)
@@ -57,21 +57,26 @@ def WindowUpdate():
 
 while run == True:
     pg.time.delay(16)
+    sec = t.time()
     for event in pg.event.get():
        if event.type == pg.QUIT:
            run = False
     
     blob.mouvement()
     blob.saut()
-    blob.moveup()
+    if t.time() - jumpspam > 2 :
+        blob.moveup()
+        if t.time() - jumpspam > 4 :
+            jumpspam = t.time()
+
     blob.HealthBar()
     testcovid.trajectory()
     #print('blob x :',blob.x,' blob y:',blob.y)
-    print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
+    #print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
     WindowUpdate()
     pg.display.update()
-    score += 1
-    #print(score)
+    print(jumpspam)
+    print(t.time())
     
 
 pg.quit()
