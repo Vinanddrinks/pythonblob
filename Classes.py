@@ -89,10 +89,9 @@ class player_entity:
         self.sprites3_left.append(pg.image.load('resources/mort1.png'))
 
         #infos about blob sprites management
-        self.image = self.sprites0_right[0]
         self.current_sprite = 0
+        self.image = self.sprites0_right[0]
 
-    global imageperso
 
     def mouvement(self):
         self.y += self.vely  #gerer les déplacements y
@@ -103,17 +102,16 @@ class player_entity:
             self.x -= self.vel
             self.left = True
             self.right = False
-            imageperso = pg.image.load('resources/saut_normal_gauche_0.png')
+            
             
             if self.current_sprite == 0 :
                 if self.health == 3 :
-                    imageperso = pg.image.load('resources/saut_normal_gauche_0.png')
+                    self.image = self.sprites0_left[int(self.current_sprite)]
                 
                 if self.health == 2 :
-                    self.image = self.sprites0_left[int(self.current_sprite)]
-                    imageperso = self.image
+                    self.image = self.sprites1_left[int(self.current_sprite)]
                 if self.health == 1 :
-                    self.image = self.sprites0_left[int(self.current_sprite)]
+                    self.image = self.sprites2_left[int(self.current_sprite)]
                     
 
 
@@ -125,13 +123,13 @@ class player_entity:
             if self.current_sprite == 0 :
                 if self.health == 3 :
                     self.image = self.sprites0_right[int(self.current_sprite)]
-                    imageperso = self.image
+                    
                 if self.health == 2 :
                     self.image = self.sprites1_right[int(self.current_sprite)]
-                    imageperso = self.image
+                    
                 if self.health == 1 :
                     self.image = self.sprites2_right[int(self.current_sprite)]
-                    imageperso = self.image
+                    
 
 
         if self.y >= 500:              #position du perso
@@ -156,28 +154,26 @@ class player_entity:
                     if self.health == 3 :
                         if keys[pg.K_LEFT] and self.x > self.vel :
                             self.image = self.sprites0_left[int(self.current_sprite)]
-                            imageperso = self.image
+                            
                         elif keys[pg.K_RIGHT] and self.x < 1100:
                             self.image = self.sprites0_right[int(self.current_sprite)]
-                            imageperso = self.image
+                            
                     elif self.health == 2 :
                         if keys[pg.K_LEFT] and self.x > self.vel :
                             self.image = self.sprites1_left[int(self.current_sprite)]
-                            imageperso = self.image
+                            
                         elif keys[pg.K_RIGHT] and self.x < 1100:
                             self.image = self.sprites1_right[int(self.current_sprite)]
-                            imageperso = self.image
+                            
                     elif self.health == 1 :
                         if keys[pg.K_LEFT] and self.x > self.vel :
                             self.image = self.sprites2_left[int(self.current_sprite)]
-                            imageperso = self.image
+                            
                         elif keys[pg.K_RIGHT] and self.x < 1100:
                             self.image = self.sprites2_right[int(self.current_sprite)]
-                            imageperso = self.image
+                            
 
 
-    def actualiseSprites(self):
-        imageperso = self.image
     
     def HealthBar(self):
 
