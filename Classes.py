@@ -192,6 +192,10 @@ class player_entity:
                 self.current_sprite = 0
                 self.Jump = False
             self.current_sprite += 0.3
+
+            if self.y < -500 :
+
+                self.health = self.health - 1
  
     def saut(self):
         self.animesaut = True

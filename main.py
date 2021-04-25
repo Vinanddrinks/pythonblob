@@ -69,9 +69,10 @@ while run == True:
     blob.HealthBar()
     testcovid.trajectory()
     print('blob x :',blob.x,' blob y:',blob.y)
-    print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
+    #print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
     WindowUpdate()
     pg.display.update()
+    print(blob.health)
     
 
 pg.quit()
