@@ -63,10 +63,8 @@ while run == True:
            run = False
     
     blob.mouvement()
-    blob.saut()
     blob.moveup()
 
-    blob.HealthBar()
     testcovid.trajectory()
     print('blob x :',blob.x,' blob y:',blob.y)
     #print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )

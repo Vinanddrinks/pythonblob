@@ -88,10 +88,6 @@ class player_entity:
         self.sprites2_left.append(pg.image.load('resources/saut_stade2_gauche_4.png'))
         self.sprites2_left.append(pg.image.load('resources/saut_stade2_gauche_5.png'))
 
-        #SPRITE 3 ( mort )
-        self.sprites3_right.append(pg.image.load('resources/mort2.png'))
-        self.sprites3_left.append(pg.image.load('resources/mort1.png'))
-
         #infos about blob sprites management
         self.current_sprite = 0
         self.image = self.sprites0_right[0]
@@ -142,7 +138,7 @@ class player_entity:
 
 
         if self.y >= 500:              #position du perso
-            self.vely = 0              #si dans le sol => remonte a 600
+            self.vely = 0              #si dans le sol => remonte a 500
             if self.y > 500:           #si sur sol vely=0 car pas de gravité
                 self.y = 500
         else :
@@ -193,17 +189,16 @@ class player_entity:
                 self.Jump = False
             self.current_sprite += 0.3
 
-            if self.y < -500 :
-
+            if self.y < -350 :
+                self.y = 500
                 self.health = self.health - 1
- 
-    def saut(self):
-        self.animesaut = True
 
-    def HealthBar(self):
+            if self.health == 0 :
+                self.y = 500
+                self.x = 540
+                self.image = pg.image.load('resources/mort2.png')
+                self.vel = 0
 
-        if self.health == 3:
-            life = pg.image.load('resources/saut_normal_droit_0.png')
 
 #Fin classe joueur
 
