@@ -65,12 +65,12 @@ while run == True:
     blob.moveup()
     blob.HealthBar()
     testcovid.trajectory()
-    print('blob x :',blob.x,' blob y:',blob.y)
+    #print('blob x :',blob.x,' blob y:',blob.y)
     print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
     WindowUpdate()
     pg.display.update()
     score += 1
-    print(score)
+    #print(score)
     
 
 pg.quit()

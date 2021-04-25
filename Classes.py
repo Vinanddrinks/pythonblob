@@ -187,22 +187,22 @@ class ennemy:
         #variables initialisation
         self.sprite = pg.image.load('resources/covidtest.png')
         if r.choice([True,False]):
-            self.x = 1160
-            self.theta = n.radians(r.randint(90,180))
-            self.vi = -200
+            self.x = 1200
+            self.theta = n.radians(r.randint(180,225))
         else:
             self.x = 10
-            self.theta = n.radians(r.randint(-180,-90))
-            self.vi = 200
-        self.xi = self.x
-        self.y = r.randint(30,300)
+            self.theta = n.radians(r.randint(-45,0))
+        self.vi = 800000
+        self.x_init = self.x
+        self.y = r.randint(-360,0)
         self.init_height = self.y
         self.vi = 200
         self.time = 0
+        #end variable initialisation
     def trajectory(self):
-        self.time += 0.03
-        self.x = self.vi*n.cos(self.theta)*self.time + self.xi
-        self.y = +9.8*((self.time*self.time)/2) - self.vi*n.sin(self.theta)*self.time - self.init_height
+        self.time += 0.045
+        self.x = self.vi*n.cos(self.theta)*self.time + self.x_init
+        self.y = 60*((self.time*self.time)/2) - self.vi*n.sin(self.theta)*self.time - self.init_height
     
 
 #End
