@@ -153,7 +153,7 @@ class player_entity:
             self.Jump = True
         if self.Jump == True :
             if self.current_sprite < 6 :
-                if int(self.current_sprite) == 3 :
+                if int(self.current_sprite) == 4 :
                     self.vely = -16
                 if self.health == 3 :
                     if keys[pg.K_LEFT] and self.x > self.vel :

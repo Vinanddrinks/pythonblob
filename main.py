@@ -22,8 +22,11 @@ clock = pg.time.Clock()
 #declaration
 score = 0
 fond = pg.image.load('resources/fond.jpg')
-font = pg.font.SysFont('comicsans', 50, True)
-text = font.render('Score : ' + str(score), 1, (0, 0, 255))
+
+font = pg.font.SysFont('comicsans', 35, True)   #scorefond
+text = font.render('SCORE : ' + str(t.time()), 1, (255,255, 255))
+
+
 keys = pg.key.get_pressed()
 window = pg.display.set_mode((1280, 720))
 pg.display.set_caption("Protect PyBlob") 
