@@ -21,11 +21,8 @@ clock = pg.time.Clock()
 
 #declaration
 score = 0
+
 fond = pg.image.load('resources/fond.jpg')
-
-font = pg.font.SysFont('comicsans', 35, True)   #scorefond
-text = font.render('SCORE : ' + str(t.time()), 1, (255,255, 255))
-
 
 keys = pg.key.get_pressed()
 window = pg.display.set_mode((1280, 720))
@@ -45,7 +42,6 @@ def WindowUpdate():
     window.blit(fond,(0,0))
     window.blit(testcovid.sprite,(testcovid.x,testcovid.y))
     window.blit(blob.image, (blob.x, blob.y))
-    window.blit(text, (1070, 30) )
     if blob.health == 3:
         window.blit(life, (30, 30))
         window.blit(life, (60, 30))
@@ -57,6 +53,7 @@ def WindowUpdate():
         window.blit(life, (30, 30))
     else :
         window.blit(no_life, (30, 30))
+    window.blit(pg.image.load('resources/score blob.png'), (1000 , 30))
 
 # End def Update
     
