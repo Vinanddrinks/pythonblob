@@ -53,8 +53,6 @@ def WindowUpdate():
         window.blit(life, (30, 30))
     else :
         window.blit(no_life, (30, 30))
-    window.blit(pg.image.load('resources/score blob.png')*2, (1000  , 30))
-
 # End def Update
     
 
