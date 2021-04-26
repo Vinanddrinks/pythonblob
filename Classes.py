@@ -151,7 +151,7 @@ class player_entity:
         keys = pg.key.get_pressed()
         if keys[pg.K_SPACE]:
             self.Jump = True
-        if self.Jump == True :
+        if self.Jump == True and self.health != 0:
             if self.current_sprite < 6 :
                 if int(self.current_sprite) == 4 :
                     self.vely = -16
@@ -185,6 +185,7 @@ class player_entity:
                     self.image = self.actualsprites1[0]
                 if self.health == 1 :
                     self.image = self.actualsprites2[0]
+
                 self.current_sprite = 0
                 self.Jump = False
             self.current_sprite += 0.3
