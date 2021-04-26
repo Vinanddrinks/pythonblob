@@ -27,9 +27,10 @@ text = font.render('Score : ' + str(score), 1, (0, 0, 255))
 keys = pg.key.get_pressed()
 window = pg.display.set_mode((1280, 720))
 pg.display.set_caption("Protect PyBlob") 
+
 life = pg.image.load('resources/heart.png')
-life2 = pg.image.load('resources/heart.png')
-life3 = pg.image.load('resources/heart.png')
+no_life = pg.image.load('resources/no_heart.png')
+
 blob = player_entity(40, 400)
 run = True
 testcovid = ennemy()
@@ -44,13 +45,15 @@ def WindowUpdate():
     window.blit(text, (1070, 30) )
     if blob.health == 3:
         window.blit(life, (30, 30))
-        window.blit(life2, (60, 30))
-        window.blit(life3, (90, 30))
+        window.blit(life, (60, 30))
+        window.blit(life, (90, 30))
     elif blob.health == 2:
         window.blit(life, (30, 30))
-        window.blit(life2, (60, 30))
-    else:
+        window.blit(life, (60, 30))
+    elif blob.health == 1:
         window.blit(life, (30, 30))
+    else :
+        window.blit(no_life, (30, 30))
 
 # End def Update
     
