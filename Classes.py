@@ -91,6 +91,7 @@ class player_entity:
         #infos about blob sprites management
         self.current_sprite = 0
         self.image = self.sprites0_right[0]
+        blobrect = self.image.get_rect()
         self.Jump = False
 
 
@@ -134,7 +135,14 @@ class player_entity:
 
                 if self.health == 1 :
                     self.image = self.sprites2_right[int(self.current_sprite)]
-                    self.actualsprites2 = self.sprites2_right   
+                    self.actualsprites2 = self.sprites2_right
+
+        else :
+            if self.health == 2 :
+                self.image = self.actualsprites1[int(self.current_sprite)]
+
+            if self.health == 1 :
+                self.image = self.sprites2_right[int(self.current_sprite)]
 
 
         if self.y >= 500:              #position du perso
@@ -146,6 +154,7 @@ class player_entity:
                 self.vely = min(self.vely + 5, 100)
             else:
                 self.vely = min(self.vely + 1, 100)     #ajout de la gravité
+
 
     def moveup(self):
         keys = pg.key.get_pressed()
@@ -200,6 +209,7 @@ class player_entity:
                 self.image = pg.image.load('resources/mort2.png')
                 self.vel = 0
 
+        self.rectblob = self.image.get_rect()
 
 #Fin classe joueur
 
@@ -219,11 +229,14 @@ class ennemy:
         self.init_height = self.y
         self.vi = 200
         self.time = 0
+
+        self.ennemyrect = self.sprite.get_rect()
         #end variable initialisation
     def trajectory(self):
         self.time += 0.045
         self.x = self.vi*n.cos(self.theta)*self.time + self.x_init
         self.y = 60*((self.time*self.time)/2) - self.vi*n.sin(self.theta)*self.time - self.init_height
+    
     
 
 #End

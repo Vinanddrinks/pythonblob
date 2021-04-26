@@ -35,6 +35,7 @@ blob = player_entity(40, 400)
 run = True
 testcovid = ennemy()
 jumpspam = 0
+
 #end_declaration
 
 # Def Update (don't touch !)
@@ -42,6 +43,18 @@ def WindowUpdate():
     window.blit(fond,(0,0))
     window.blit(testcovid.sprite,(testcovid.x,testcovid.y))
     window.blit(blob.image, (blob.x, blob.y))
+
+    hitboxblob = (blob.x + 50, blob.y + 130, 100, 60)
+    hitboxenemy = (testcovid.x + 15, testcovid.y + 15, 55, 55)
+
+    if  pg.Rect.colliderect(pg.draw.rect(window, (0, 0, 0), hitboxblob, 2), pg.draw.rect(window, (0, 0, 0), hitboxenemy, 2)) == True:
+        blob.y = 500
+        blob.x = 200
+        blob.health -= 1
+
+    window.blit(testcovid.sprite,(testcovid.x,testcovid.y))
+    window.blit(blob.image, (blob.x, blob.y))
+
     if blob.health == 3:
         window.blit(life, (30, 30))
         window.blit(life, (60, 30))
@@ -54,7 +67,6 @@ def WindowUpdate():
     else :
         window.blit(no_life, (30, 30))
 # End def Update
-    
 
 while run == True:
     pg.time.delay(16)
@@ -68,6 +80,7 @@ while run == True:
 
     testcovid.trajectory()
     print('blob x :',blob.x,' blob y:',blob.y)
+
     #print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
     WindowUpdate()
     pg.display.update()
@@ -76,4 +89,3 @@ while run == True:
 
 pg.quit()
 # END
-
