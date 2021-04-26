@@ -137,13 +137,6 @@ class player_entity:
                     self.image = self.sprites2_right[int(self.current_sprite)]
                     self.actualsprites2 = self.sprites2_right
 
-        else :
-            if self.health == 2 :
-                self.image = self.actualsprites1[int(self.current_sprite)]
-
-            if self.health == 1 :
-                self.image = self.sprites2_right[int(self.current_sprite)]
-
 
         if self.y >= 500:              #position du perso
             self.vely = 0              #si dans le sol => remonte a 500

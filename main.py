@@ -51,7 +51,8 @@ def WindowUpdate():
         blob.y = 500
         blob.x = 200
         blob.health -= 1
-
+        
+    window.blit(fond,(0,0))
     window.blit(testcovid.sprite,(testcovid.x,testcovid.y))
     window.blit(blob.image, (blob.x, blob.y))
 
