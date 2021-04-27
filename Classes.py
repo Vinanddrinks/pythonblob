@@ -94,6 +94,10 @@ class player_entity:
         blobrect = self.image.get_rect()
         self.Jump = False
 
+        #hitboxes management 
+        self.hitboxblob = (self.x + 36, self.y + 115, 120, 30)
+        self.sizey = 0
+
 
     def mouvement(self):
         self.y += self.vely  #gerer les déplacements y
@@ -157,6 +161,11 @@ class player_entity:
             if self.current_sprite < 6 :
                 if int(self.current_sprite) == 4 :
                     self.vely = -16
+                    self.sizey -= 20
+
+                if int(self.current_sprite) == 5 :
+                   self.sizey -= 10
+
                 if self.health == 3 :
                     if keys[pg.K_LEFT] and self.x > self.vel :
                         self.image = self.sprites0_left[int(self.current_sprite)]
@@ -181,14 +190,8 @@ class player_entity:
                     else : 
                         self.image = self.actualsprites2[int(self.current_sprite)]
             else : 
-                if self.health == 3 :
-                    self.image = self.actualsprites0[0]
-                if self.health == 2 :
-                    self.image = self.actualsprites1[0]
-                if self.health == 1 :
-                    self.image = self.actualsprites2[0]
-
                 self.current_sprite = 0
+                self.sizey = 0
                 self.Jump = False
             self.current_sprite += 0.3
 
@@ -202,7 +205,7 @@ class player_entity:
                 self.image = pg.image.load('resources/mort2.png')
                 self.vel = 0
 
-        self.rectblob = self.image.get_rect()
+        self.hitboxblob = (self.x + 42  , self.y + 120 + self.sizey, 110 , 70)
 
 #Fin classe joueur
 

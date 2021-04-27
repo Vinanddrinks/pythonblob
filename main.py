@@ -40,14 +40,10 @@ jumpspam = 0
 
 # Def Update (don't touch !)
 def WindowUpdate():
-    window.blit(fond,(0,0))
-    window.blit(testcovid.sprite,(testcovid.x,testcovid.y))
-    window.blit(blob.image, (blob.x, blob.y))
 
-    hitboxblob = (blob.x + 50, blob.y + 130, 100, 60)
-    hitboxenemy = (testcovid.x + 15, testcovid.y + 15, 55, 55)
+    hitboxenemy = (testcovid.x + 15, testcovid.y + 15, 50, 50)
 
-    if  pg.Rect.colliderect(pg.draw.rect(window, (0, 0, 0), hitboxblob, 2), pg.draw.rect(window, (0, 0, 0), hitboxenemy, 2)) == True:
+    if  pg.Rect.colliderect(pg.draw.rect(window, (0, 0, 0), blob.hitboxblob, 2), pg.draw.rect(window, (0, 0, 0), hitboxenemy, 2)) == True:
         blob.y = 500
         blob.x = 200
         blob.health -= 1
@@ -60,11 +56,14 @@ def WindowUpdate():
         window.blit(life, (30, 30))
         window.blit(life, (60, 30))
         window.blit(life, (90, 30))
+        blob.image = blob.actualsprites0[0]
     elif blob.health == 2:
         window.blit(life, (30, 30))
         window.blit(life, (60, 30))
+        blob.image = blob.actualsprites1[0]
     elif blob.health == 1:
         window.blit(life, (30, 30))
+        blob.image = blob.actualsprites2[0]
     else :
         window.blit(no_life, (30, 30))
     window.blit(pg.image.load('resources/score blob.png'), (1016 , 32))
