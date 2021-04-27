@@ -199,7 +199,7 @@ class player_entity:
                 self.y = 500
                 self.health = self.health - 1
 
-            if self.health == 0 :
+            if self.health <= 0 :
                 self.y = 500
                 self.x = 540
                 self.image = pg.image.load('resources/mort2.png')
@@ -215,23 +215,24 @@ class ennemy:
         self.sprite = pg.image.load('resources/covidtest.png')
         if r.choice([True,False]):
             self.x = 1200
-            self.theta = n.radians(r.randint(180,225))
+            self.theta = n.radians(r.randint(90,225))
         else:
             self.x = 10
-            self.theta = n.radians(r.randint(-45,0))
-        self.vi = 800000
+            self.theta = n.radians(r.randint(-45,90))
+        self.vi = r.randint(800000,1200000)
         self.x_init = self.x
         self.y = r.randint(-360,0)
         self.init_height = self.y
         self.vi = 200
         self.time = 0
+        self.gravity = r.randint(30,60)
 
         self.ennemyrect = self.sprite.get_rect()
         #end variable initialisation
     def trajectory(self):
         self.time += 0.045
         self.x = self.vi*n.cos(self.theta)*self.time + self.x_init
-        self.y = 60*((self.time*self.time)/2) - self.vi*n.sin(self.theta)*self.time - self.init_height
+        self.y = self.gravity*((self.time*self.time)/2) - self.vi*n.sin(self.theta)*self.time - self.init_height
     
     
 

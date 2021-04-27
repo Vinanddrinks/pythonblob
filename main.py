@@ -31,19 +31,23 @@ blob = player_entity(40, 400)
 run = True
 covids = []
 jumpspam = 0
-
+invulnerability = 0
+slowerspawn = 0
 #end_declaration
 
 # Def Update (don't touch !)
 def WindowUpdate(): 
+    global invulnerability
     window.blit(fond,(0,0))
     for covid in covids:
-        window.blit(covid.sprite,(covid.x,covid.y))
         hitboxenemy = (covid.x + 15, covid.y + 15, 50, 50)
-        if  pg.Rect.colliderect(pg.draw.rect(window, (0, 0, 0), blob.hitboxblob, 2), pg.draw.rect(window, (0, 0, 0), hitboxenemy, 2)) == True:
+        if  pg.Rect.colliderect(pg.draw.rect(window, (0, 0, 0), blob.hitboxblob, 2), pg.draw.rect(window, (0, 0, 0), hitboxenemy, 2)) == True and invulnerability == 300:
             blob.y = 500
             blob.x = 200
             blob.health -= 1
+            invulnerability = 0
+        window.blit(covid.sprite,(covid.x,covid.y))
+        
     window.blit(blob.image, (blob.x, blob.y))
 
     if blob.health == 3:
@@ -70,14 +74,20 @@ while run == True:
        if event.type == pg.QUIT:
            run = False
     # enemy spawn
-    if len(covids) < 5:
+    if len(covids) < 10 and slowerspawn == 30:
         covids.append(ennemy())
+        slowerspawn = 0
+    if slowerspawn < 120:
+        slowerspawn +=1
     # enemy movement and offscreen checking
     for covid in covids:
-        if covid.x < 1280 and covid.x > 0 and covid.y > -7400:
+        if covid.x < 1280 and covid.x > 0 and covid.y > -740:
             covid.trajectory()
         else:
             covids.pop(covids.index(covid))
+    
+    if invulnerability < 300:
+        invulnerability += 1
     
     blob.mouvement()
     blob.moveup()
@@ -86,7 +96,8 @@ while run == True:
     #print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
     WindowUpdate()
     pg.display.update()
-    print(blob.health)
+    #print(blob.health)
+    print(invulnerability)
     
 
 pg.quit()
