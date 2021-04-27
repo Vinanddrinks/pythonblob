@@ -23,32 +23,27 @@ clock = pg.time.Clock()
 score = 0
 fond = pg.image.load('resources/fond.jpg')
 keys = pg.key.get_pressed()
-window = pg.display.set_mode((1280, 720))
+window = pg.display.set_mode((1280, 720),pg.DOUBLEBUF, 32)
 pg.display.set_caption("Protect PyBlob") 
 life = pg.image.load('resources/heart.png')
 no_life = pg.image.load('resources/no_heart.png')
 blob = player_entity(40, 400)
 run = True
-testcovid = ennemy()
 covids = []
 jumpspam = 0
 
 #end_declaration
 
 # Def Update (don't touch !)
-def WindowUpdate():
-
-    hitboxenemy = (testcovid.x + 15, testcovid.y + 15, 50, 50)
-
-    if  pg.Rect.colliderect(pg.draw.rect(window, (0, 0, 0), blob.hitboxblob, 2), pg.draw.rect(window, (0, 0, 0), hitboxenemy, 2)) == True:
-        blob.y = 500
-        blob.x = 200
-        blob.health -= 1
-        
+def WindowUpdate(): 
     window.blit(fond,(0,0))
     for covid in covids:
         window.blit(covid.sprite,(covid.x,covid.y))
-    window.blit(testcovid.sprite,(testcovid.x,testcovid.y))
+        hitboxenemy = (covid.x + 15, covid.y + 15, 50, 50)
+        if  pg.Rect.colliderect(pg.draw.rect(window, (0, 0, 0), blob.hitboxblob, 2), pg.draw.rect(window, (0, 0, 0), hitboxenemy, 2)) == True:
+            blob.y = 500
+            blob.x = 200
+            blob.health -= 1
     window.blit(blob.image, (blob.x, blob.y))
 
     if blob.health == 3:
@@ -86,9 +81,7 @@ while run == True:
     
     blob.mouvement()
     blob.moveup()
-
-    testcovid.trajectory()
-    print('blob x :',blob.x,' blob y:',blob.y)
+    #print('blob x :',blob.x,' blob y:',blob.y)
 
     #print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
     WindowUpdate()
