@@ -40,12 +40,12 @@ def WindowUpdate():
     global invulnerability
     window.blit(fond,(0,0))
     for covid in covids:
-        hitboxenemy = (covid.x + 15, covid.y + 15, 50, 50)
-        if  pg.Rect.colliderect(pg.draw.rect(window, (0, 0, 0), blob.hitboxblob, 2), pg.draw.rect(window, (0, 0, 0), hitboxenemy, 2)) == True and invulnerability == 300:
-            blob.y = 500
-            blob.x = 200
+        hitboxenemy = (covid.x + 15, covid.y + 15, 40, 40)
+        if  pg.Rect.colliderect(pg.draw.rect(window, (0, 0, 0), blob.hitboxblob, 2), pg.draw.rect(window, (0, 0, 0), hitboxenemy, 2)) == True and invulnerability == 60:
             blob.health -= 1
             invulnerability = 0
+    window.blit(fond,(0,0))
+    for covid in covids:
         window.blit(covid.sprite,(covid.x,covid.y))
         
     window.blit(blob.image, (blob.x, blob.y))
@@ -62,8 +62,9 @@ def WindowUpdate():
     elif blob.health == 1:
         window.blit(life, (30, 30))
         blob.image = blob.actualsprites2[0]
-    else :
+    elif blob.health <= 0: 
         window.blit(no_life, (30, 30))
+
     window.blit(pg.image.load('resources/score blob.png'), (1016 , 32))
 # End def Update
 
@@ -74,11 +75,13 @@ while run == True:
        if event.type == pg.QUIT:
            run = False
     # enemy spawn
+
     if len(covids) < 10 and slowerspawn == 30:
         covids.append(ennemy())
         slowerspawn = 0
     if slowerspawn < 120:
         slowerspawn +=1
+    
     # enemy movement and offscreen checking
     for covid in covids:
         if covid.x < 1280 and covid.x > 0 and covid.y > -740:
@@ -86,7 +89,7 @@ while run == True:
         else:
             covids.pop(covids.index(covid))
     
-    if invulnerability < 300:
+    if invulnerability < 60:
         invulnerability += 1
     
     blob.mouvement()

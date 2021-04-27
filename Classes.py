@@ -189,23 +189,25 @@ class player_entity:
                         self.image = self.sprites2_right[int(self.current_sprite)]
                     else : 
                         self.image = self.actualsprites2[int(self.current_sprite)]
+                
             else : 
                 self.current_sprite = 0
                 self.sizey = 0
                 self.Jump = False
             self.current_sprite += 0.3
 
-            if self.y < -350 :
-                self.y = 500
-                self.health = self.health - 1
-
-            if self.health <= 0 :
-                self.y = 500
-                self.x = 540
-                self.image = pg.image.load('resources/mort2.png')
-                self.vel = 0
+        if self.y < -350 :
+            self.y = 500
+            self.health = self.health - 1
 
         self.hitboxblob = (self.x + 42  , self.y + 120 + self.sizey, 110 , 70)
+
+        if self.health <= 0 :
+            self.y = 500
+            self.x = 540
+            self.image = pg.image.load('resources/mort2.png')
+            self.vel = 0
+            self.hitboxblob = ( 0, 0, 0, 0)
 
 #Fin classe joueur
 
