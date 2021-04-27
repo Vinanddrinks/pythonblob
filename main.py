@@ -21,19 +21,16 @@ clock = pg.time.Clock()
 
 #declaration
 score = 0
-
 fond = pg.image.load('resources/fond.jpg')
-
 keys = pg.key.get_pressed()
 window = pg.display.set_mode((1280, 720))
 pg.display.set_caption("Protect PyBlob") 
-
 life = pg.image.load('resources/heart.png')
 no_life = pg.image.load('resources/no_heart.png')
-
 blob = player_entity(40, 400)
 run = True
 testcovid = ennemy()
+covids = []
 jumpspam = 0
 
 #end_declaration
@@ -49,6 +46,8 @@ def WindowUpdate():
         blob.health -= 1
         
     window.blit(fond,(0,0))
+    for covid in covids:
+        window.blit(covid.sprite,(covid.x,covid.y))
     window.blit(testcovid.sprite,(testcovid.x,testcovid.y))
     window.blit(blob.image, (blob.x, blob.y))
 
@@ -75,6 +74,15 @@ while run == True:
     for event in pg.event.get():
        if event.type == pg.QUIT:
            run = False
+    # enemy spawn
+    if len(covids) < 5:
+        covids.append(ennemy())
+    # enemy movement and offscreen checking
+    for covid in covids:
+        if covid.x < 1280 and covid.x > 0 and covid.y > -7400:
+            covid.trajectory()
+        else:
+            covids.pop(covids.index(covid))
     
     blob.mouvement()
     blob.moveup()
