@@ -82,12 +82,15 @@ while run == True:
            run = False
     # enemy spawn
 
-    if len(covids) < 10 and slowerspawn == 30:
+    if len(covids) < 15 and slowerspawn == 30 and blob.health != 0:
         covids.append(ennemy())
         blob.score += 1
         slowerspawn = 0
     if slowerspawn < 120:
         slowerspawn +=1
+    if blob.health == 0 :
+        for covid in covids :
+            covids.pop(covids.index(covid))
     
     # enemy movement and offscreen checking
     for covid in covids:
@@ -108,7 +111,7 @@ while run == True:
     WindowUpdate()
     pg.display.update()
     #print(blob.health)
-    print(invulnerability)
+    #print(invulnerability)
     
 
 pg.quit()

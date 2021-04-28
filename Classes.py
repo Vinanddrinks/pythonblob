@@ -100,14 +100,17 @@ class player_entity:
         #score management 
         self.score = 0
         self.scorecopy = 0
+        self.scorecopy2 = 0
 
         self.score1 = 0
         self.score10 = 0
         self.score100 = 0
 
         self.scorelist = []
+        self.scorelist2 = []
 
         self.countscore = 0
+        self.countscore2 = 0
 
         self.spritesscore = []
 
@@ -236,33 +239,43 @@ class player_entity:
 
     def scoreblob(self):
 
-        self.scorecopy = self.score
+        self.scorecopy2 = self.score
+        self.scorecopy = self.scorecopy2
 
         while self.scorecopy != 0 : 
             self.countscore = 0
             while self.scorecopy >= 10 :
                 while self.scorecopy >= 10 :
-                    self.scorecopy = self.scorecopy/10
-                    self.scorecopy = int(self.scorecopy)
+                    self.scorecopy = int(self.scorecopy/10)
                     self.countscore += 1
-                    self.scorelist.append(self.scorecopy)
-                self.scorecopy = self.score - self.scorecopy*self.countscore*10
+                self.scorelist.append(self.scorecopy)
+
+                if int(self.scorecopy2/10)%10 == 0 :
+                    self.scorelist.append(0)
+
+                self.scorecopy = self.scorecopy2 - self.scorecopy*(10**self.countscore)
+                self.scorecopy2 = self.scorecopy
+                if self.countscore > self.countscore2 :
+                    self.countscore2 = self.countscore
+                self.countscore = 0
             self.scorelist.append(self.scorecopy)
+
             if self.scorecopy < 10 :
                 self.scorecopy = 0
 
-            if self.countscore == 2 :
+            if self.countscore2 == 2 :
                 self.score1 = self.scorelist[2]
                 self.score10 = self.scorelist[1]
                 self.score100 = self.scorelist[0]
 
-            if self.countscore == 1 :
+            if self.countscore2 == 1 :
                 self.score1 = self.scorelist[1]
                 self.score10 = self.scorelist[0]
 
-            if self.countscore == 0 :
+            if self.countscore2 == 0 :
                 self.score1 = self.scorelist[0]
 
+            self.scorelist2 = self.scorelist
             self.scorelist = []
 
 
@@ -279,7 +292,7 @@ class ennemy:
         else:
             self.x = 10
             self.theta = n.radians(r.randint(-45,90))
-        self.vi = r.randint(800000,1200000)
+        self.vi = r.randint(1200000,1600000)
         self.x_init = self.x
         self.y = r.randint(-360,0)
         self.init_height = self.y
