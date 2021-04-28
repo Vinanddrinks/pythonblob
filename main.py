@@ -43,10 +43,10 @@ def WindowUpdate():
         if  pg.Rect.colliderect(pg.draw.rect(window, (0, 0, 0), blob.hitboxblob, 2), pg.draw.rect(window, (0, 0, 0), hitboxenemy, 2)) == True and invulnerability == 60:
             blob.health -= 1
             invulnerability = 0
-        blob.score += 1
     window.blit(fond,(0,0))
     for covid in covids:
         window.blit(covid.sprite,(covid.x,covid.y))
+        
         
     window.blit(blob.image, (blob.x, blob.y))
 
@@ -67,8 +67,8 @@ def WindowUpdate():
 
     #score
     window.blit(pg.image.load('resources/score blob.png'), (1016 , 32))
-    window.blit(blob.spritesscore[blob.score1], (1180 , 35))
-    window.blit(blob.spritesscore[blob.score10], (1160 , 35))
+    window.blit(blob.spritesscore[blob.score1], (1170 , 35))
+    window.blit(blob.spritesscore[blob.score10], (1150 , 35))
     window.blit(blob.spritesscore[blob.score100], (1130 , 35))
         
 
@@ -84,6 +84,7 @@ while run == True:
 
     if len(covids) < 10 and slowerspawn == 30:
         covids.append(ennemy())
+        blob.score += 1
         slowerspawn = 0
     if slowerspawn < 120:
         slowerspawn +=1

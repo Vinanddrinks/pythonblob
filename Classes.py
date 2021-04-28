@@ -91,12 +91,36 @@ class player_entity:
         #infos about blob sprites management
         self.current_sprite = 0
         self.image = self.sprites0_right[0]
-        blobrect = self.image.get_rect()
         self.Jump = False
 
         #hitboxes management 
         self.hitboxblob = (self.x + 36, self.y + 115, 120, 30)
         self.sizey = 0
+
+        #score management 
+        self.score = 0
+        self.scorecopy = 0
+
+        self.score1 = 0
+        self.score10 = 0
+        self.score100 = 0
+
+        self.scorelist = []
+
+        self.countscore = 0
+
+        self.spritesscore = []
+
+        self.spritesscore.append(pg.image.load('resources/0.png'))
+        self.spritesscore.append(pg.image.load('resources/1.png'))
+        self.spritesscore.append(pg.image.load('resources/2.png'))
+        self.spritesscore.append(pg.image.load('resources/3.png'))
+        self.spritesscore.append(pg.image.load('resources/4.png'))
+        self.spritesscore.append(pg.image.load('resources/5.png'))
+        self.spritesscore.append(pg.image.load('resources/6.png'))
+        self.spritesscore.append(pg.image.load('resources/7.png'))
+        self.spritesscore.append(pg.image.load('resources/8.png'))
+        self.spritesscore.append(pg.image.load('resources/9.png'))
 
 
     def mouvement(self):
@@ -212,43 +236,35 @@ class player_entity:
 
     def scoreblob(self):
 
-        self.score = 0
-        self.score2 = 0
+        self.scorecopy = self.score
 
-        self.score100 = 0
-        self.score10 = 0
-        self.score1 = 0
-
-        self.countscore = 0
-
-        self.spritesscore = []
-
-        self.spritesscore.append(pg.image.load('resources/0.png'))
-        self.spritesscore.append(pg.image.load('resources/1.png'))
-        self.spritesscore.append(pg.image.load('resources/2.png'))
-        self.spritesscore.append(pg.image.load('resources/3.png'))
-        self.spritesscore.append(pg.image.load('resources/4.png'))
-        self.spritesscore.append(pg.image.load('resources/5.png'))
-        self.spritesscore.append(pg.image.load('resources/6.png'))
-        self.spritesscore.append(pg.image.load('resources/7.png'))
-        self.spritesscore.append(pg.image.load('resources/8.png'))
-        self.spritesscore.append(pg.image.load('resources/9.png'))
-
-        self.score2 = self.score
-        while self.score2 != 0 :
-            self.score3 = self.score2
+        while self.scorecopy != 0 : 
             self.countscore = 0
-            while self.score2 > 10 :
-                self.score2 = self.score2/10
-                self.score2 = int(self.score2)
-                self.countscore += 1
-            if self.countscore == 0 :
-                self.positionscorex = 1116
-                score2 =  0
-            if self.countscore == 1 :
-                self.positionscorex = 1086 
+            while self.scorecopy >= 10 :
+                while self.scorecopy >= 10 :
+                    self.scorecopy = self.scorecopy/10
+                    self.scorecopy = int(self.scorecopy)
+                    self.countscore += 1
+                    self.scorelist.append(self.scorecopy)
+                self.scorecopy = self.score - self.scorecopy*self.countscore*10
+            self.scorelist.append(self.scorecopy)
+            if self.scorecopy < 10 :
+                self.scorecopy = 0
+
             if self.countscore == 2 :
-                self.positionscorex = 1056
+                self.score1 = self.scorelist[2]
+                self.score10 = self.scorelist[1]
+                self.score100 = self.scorelist[0]
+
+            if self.countscore == 1 :
+                self.score1 = self.scorelist[1]
+                self.score10 = self.scorelist[0]
+
+            if self.countscore == 0 :
+                self.score1 = self.scorelist[0]
+
+            self.scorelist = []
+
 
 
 #Fin classe joueur
