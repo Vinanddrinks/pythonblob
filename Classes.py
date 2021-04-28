@@ -209,6 +209,48 @@ class player_entity:
             self.vel = 0
             self.hitboxblob = ( 0, 0, 0, 0)
 
+
+    def scoreblob(self):
+
+        self.score = 0
+        self.score2 = 0
+
+        self.score100 = 0
+        self.score10 = 0
+        self.score1 = 0
+
+        self.countscore = 0
+
+        self.spritesscore = []
+
+        self.spritesscore.append(pg.image.load('resources/0.png'))
+        self.spritesscore.append(pg.image.load('resources/1.png'))
+        self.spritesscore.append(pg.image.load('resources/2.png'))
+        self.spritesscore.append(pg.image.load('resources/3.png'))
+        self.spritesscore.append(pg.image.load('resources/4.png'))
+        self.spritesscore.append(pg.image.load('resources/5.png'))
+        self.spritesscore.append(pg.image.load('resources/6.png'))
+        self.spritesscore.append(pg.image.load('resources/7.png'))
+        self.spritesscore.append(pg.image.load('resources/8.png'))
+        self.spritesscore.append(pg.image.load('resources/9.png'))
+
+        self.score2 = self.score
+        while self.score2 != 0 :
+            self.score3 = self.score2
+            self.countscore = 0
+            while self.score2 > 10 :
+                self.score2 = self.score2/10
+                self.score2 = int(self.score2)
+                self.countscore += 1
+            if self.countscore == 0 :
+                self.positionscorex = 1116
+                score2 =  0
+            if self.countscore == 1 :
+                self.positionscorex = 1086 
+            if self.countscore == 2 :
+                self.positionscorex = 1056
+
+
 #Fin classe joueur
 
 class ennemy:
@@ -235,7 +277,6 @@ class ennemy:
         self.time += 0.045
         self.x = self.vi*n.cos(self.theta)*self.time + self.x_init
         self.y = self.gravity*((self.time*self.time)/2) - self.vi*n.sin(self.theta)*self.time - self.init_height
-    
     
 
 #End
