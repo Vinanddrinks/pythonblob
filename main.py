@@ -86,7 +86,7 @@ while run == True:
         covids.append(ennemy())
         blob.score += 1
         slowerspawn = 0
-    if slowerspawn < 120:
+    if slowerspawn < 30:
         slowerspawn +=1
     if blob.health == 0 :
         for covid in covids :
@@ -94,17 +94,21 @@ while run == True:
     
     # enemy movement and offscreen checking
     for covid in covids:
-        if covid.x < 1280 and covid.x > 0 and covid.y > -740:
+        if covid.x < 1280 and covid.x > -80 and covid.y > -740 and covid.y > -350 :
             covid.trajectory()
         else:
             covids.pop(covids.index(covid))
     
     if invulnerability < 60:
         invulnerability += 1
+
+    blob.health = 3
+
     
     blob.mouvement()
     blob.moveup()
     blob.scoreblob()
+
     #print('blob x :',blob.x,' blob y:',blob.y)
 
     #print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
