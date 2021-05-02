@@ -102,9 +102,7 @@ while run == True:
     if invulnerability < 60:
         invulnerability += 1
 
-    blob.health = 3
 
-    
     blob.mouvement()
     blob.moveup()
     blob.scoreblob()
