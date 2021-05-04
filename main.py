@@ -19,14 +19,10 @@ clock = pg.time.Clock()
 #end pg initialisation
 
 #music loading#
-pg.mixer.init()
-pg.mixer.music.load('musiques/Dungeonboss.wav')
-pg.mixer.music.load('musiques/Maze.wav')
+pg.mixer.init(44100,16, 2, 4096)
 pg.mixer.music.load('musiques/Nightshade.ogg')
-pg.mixer.music.load('musiques/Powerup.ogg')
-pg.mixer.music.load('musiques/Underclocked.wav')
-pg.mixer.music.load('musiques/Virtualboy.wav')
-
+#music play#
+pg.mixer.music.play(-1)
 #declaration
 fond = pg.image.load('resources/fond.jpg')
 keys = pg.key.get_pressed()
@@ -82,6 +78,8 @@ def WindowUpdate():
 
 # End def Update
 
+
+
 while run == True:
     pg.time.delay(16)
     sec = t.time()
@@ -110,8 +108,7 @@ while run == True:
     if invulnerability < 60:
         invulnerability += 1
 
-    #music play#
-    pg.mixer.music.play('musiques/Dungeonboss.wav')
+    
 
     blob.mouvement()
     blob.moveup()
