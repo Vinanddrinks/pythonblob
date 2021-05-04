@@ -18,6 +18,7 @@ class player_entity:
         #coordinates values
         self.t = 0
         self.x = x
+        self.currentx = self.x
         self.y = y
         self.vel = 10
         self.vely = 0
@@ -130,6 +131,7 @@ class player_entity:
         self.y += self.vely  #gerer les déplacements y
         keys = pg.key.get_pressed()
 
+        self.currentx = self.x
 
         if keys[pg.K_LEFT] and self.x > self.vel:
             self.x -= self.vel
@@ -230,12 +232,8 @@ class player_entity:
         self.hitboxblob = (self.x + 42  , self.y + 120 + self.sizey, 110 , 70)
 
         if self.health <= 0 :
-            self.y = 500
-            self.x = 540
+            self.x = self.currentx
             self.image = pg.image.load('resources/mort2.png')
-            self.vel = 0
-            self.hitboxblob = ( 0, 0, 0, 0)
-
 
     def scoreblob(self):
 
