@@ -20,9 +20,7 @@ clock = pg.time.Clock()
 
 #music loading#
 pg.mixer.init(44100, 16, 2, 4096)
-pg.mixer.music.load('musiques/Nightshade.ogg')
-#music play#
-pg.mixer.music.play(-1)
+chooseSong(3)
 #declaration
 fond = pg.image.load('resources/fond.jpg')
 keys = pg.key.get_pressed()
