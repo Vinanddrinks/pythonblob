@@ -228,6 +228,7 @@ class player_entity:
         if self.y < -350 :
             self.y = 500
             self.health = self.health - 1
+            chooseSong(self.health)
 
         self.hitboxblob = (self.x + 42  , self.y + 120 + self.sizey, 110 , 70)
 

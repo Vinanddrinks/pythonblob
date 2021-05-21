@@ -19,7 +19,7 @@ clock = pg.time.Clock()
 #end pg initialisation
 
 #music loading#
-pg.mixer.init(44100,16, 2, 4096)
+pg.mixer.init(44100, 16, 2, 4096)
 pg.mixer.music.load('musiques/Nightshade.ogg')
 #music play#
 pg.mixer.music.play(-1)
@@ -46,6 +46,7 @@ def WindowUpdate():
         hitboxenemy = (covid.x + 15, covid.y + 15, 40, 40)
         if  pg.Rect.colliderect(pg.draw.rect(window, (0, 0, 0), blob.hitboxblob, 2), pg.draw.rect(window, (0, 0, 0), hitboxenemy, 2)) == True and invulnerability == 60:
             blob.health -= 1
+            chooseSong(blob.health)
             invulnerability = 0
     window.blit(fond,(0,0))
     for covid in covids:
