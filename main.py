@@ -107,15 +107,12 @@ while run == True:
     if invulnerability < 60:
         invulnerability += 1
 
-    
+
 
     blob.mouvement()
     blob.moveup()
     blob.scoreblob()
 
-    #print('blob x :',blob.x,' blob y:',blob.y)
-
-    #print('enemy x :', testcovid.x, 'enemy y :', testcovid.y )
     WindowUpdate()
     pg.display.update()
     #print(blob.health)
