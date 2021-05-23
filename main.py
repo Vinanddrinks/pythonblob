@@ -10,7 +10,6 @@ from Classes import *
 from functions import *
 #end-importation
 
-
 # BEGIN
 
 #pygame initialisation
@@ -18,9 +17,11 @@ pg.init()
 clock = pg.time.Clock()
 #end pg initialisation
 
+
+
 #music loading#
 pg.mixer.init(44100, 16, 2, 4096)
-chooseSong(3)
+
 #declaration
 fond = pg.image.load('resources/fond.jpg')
 keys = pg.key.get_pressed()
@@ -34,7 +35,9 @@ covids = []
 jumpspam = 0
 invulnerability = 0
 slowerspawn = 0
+constante = True
 #end_declaration
+
 
 # Def Update (don't touch !)
 def WindowUpdate(): 
@@ -78,13 +81,16 @@ def WindowUpdate():
 # End def Update
 
 
+while constante == True:
+    constante = main_menu()
+chooseSong(3)
 
 while run == True:
     pg.time.delay(16)
     sec = t.time()
     for event in pg.event.get():
-       if event.type == pg.QUIT:
-           run = False
+        if event.type == pg.QUIT:
+            run = False
     # enemy spawn
 
     if len(covids) < 15 and slowerspawn == 30 and blob.health != 0:
@@ -96,14 +102,14 @@ while run == True:
     if blob.health == 0 :
         for covid in covids :
             covids.pop(covids.index(covid))
-    
+        
     # enemy movement and offscreen checking
     for covid in covids:
         if covid.x < 1280 and covid.x > -80 and covid.y > -740 and covid.y > -350 :
             covid.trajectory()
         else:
             covids.pop(covids.index(covid))
-    
+        
     if invulnerability < 60:
         invulnerability += 1
 
@@ -117,7 +123,4 @@ while run == True:
     pg.display.update()
     #print(blob.health)
     #print(invulnerability)
-    
-
-pg.quit()
 # END
