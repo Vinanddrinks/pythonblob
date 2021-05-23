@@ -14,14 +14,10 @@ import os
 white=(255, 255, 255)
 pink = (223, 45, 201)
 black=(0, 0, 0)
-gray=(50, 50, 50)
-red=(255, 0, 0)
-green=(0, 255, 0)
-blue=(0, 0, 255)
-yellow=(255, 255, 0)
-grey = (85, 85, 85)
-screen_width=1280
-screen_height=720
+screen_w=1280
+screen_h=720
+
+window = pg.display.set_mode((1280, 720),pg.DOUBLEBUF, 32)
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
@@ -56,7 +52,7 @@ def text_format(message, textFont, textSize, textColor):
 
 def main_menu():
     menu=True
-    selected = "Start"
+    select = "Start"
     constante = True
 
     pg.mixer.music.load('musiques/Nightshade.ogg')
@@ -69,38 +65,39 @@ def main_menu():
                 quit()
             if event.type==pg.KEYDOWN:
                 if event.key==pg.K_UP:
-                    selected="Start"
+                    select="Start"
                     
                 elif event.key==pg.K_DOWN:
-                    selected="quit"
+                    select="quit"
                     
                 if event.key==pg.K_RETURN:
-                    if selected=="Start":
+                    if select=="Start":
                         return False
-                    if selected=="quit":
+                    if select=="quit":
                         pg.quit()
                         quit()
 
         # Main Menu UI
-        screen.fill(black)
+        fondt = pg.image.load('resources/FondPrincipal.png')
+        window.blit(fondt, (0,0))
         title=text_format("PROTECT LITTLE BUD", font, 90, pink)
-        if selected=="Start":
-            text_start=text_format("START", font, 75, white)
+        if select=="Start":
+            Text_Start=text_format("START", font, 75, white)
         else:
-            text_start = text_format("START", font, 75, grey)
-        if selected=="quit":
-            text_quit=text_format("QUIT", font, 75, white)
+            Text_Start = text_format("START", font, 75, black)
+        if select=="quit":
+            Text_Quit=text_format("QUIT", font, 75, white)
         else:
-            text_quit = text_format("QUIT", font, 75, grey)
+            Text_Quit = text_format("QUIT", font, 75, black)
 
-        title_rect=title.get_rect()
-        start_rect=text_start.get_rect()
-        quit_rect=text_quit.get_rect()
+        title_r=title.get_rect()
+        start_r=Text_Start.get_rect()
+        quit_r=Text_Quit.get_rect()
 
         # Main Menu Text
-        screen.blit(title, (screen_width/2 - (title_rect[2]/2), 80))
-        screen.blit(text_start, (screen_width/2 - (start_rect[2]/2), 300))
-        screen.blit(text_quit, (screen_width/2 - (quit_rect[2]/2), 360))
+        screen.blit(title, (screen_w/2 - (title_r[2]/2), 80))
+        screen.blit(Text_Start, (screen_w/2 - (start_r[2]/2), 300))
+        screen.blit(Text_Quit, (screen_w/2 - (quit_r[2]/2), 360))
         pg.display.update()
 
 
