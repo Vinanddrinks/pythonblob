@@ -3,6 +3,7 @@
 # Authors : Vincent, Joseph,Léna
 
 #importation
+from telnetlib import DO
 import pygame as pg 
 from numpy import *
 import time as t
@@ -38,7 +39,7 @@ invulnerability = 0
 slowerspawn = 0
 constante = True
 counter = 0
-trigger = 120
+keys = pg.key.get_pressed()
 #end_declaration
 
 
@@ -125,6 +126,5 @@ while run == True:
     blob.moveup()
     blob.scoreblob()
     WindowUpdate()
-    print(blob.health)
     pg.display.update()
 # END
