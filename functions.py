@@ -12,7 +12,7 @@ import os
 
 # Colors
 white=(255, 255, 255)
-pink = (223, 45, 201)
+pink = (255, 107, 255)
 black=(0, 0, 0)
 screen_w=1280
 screen_h=720
