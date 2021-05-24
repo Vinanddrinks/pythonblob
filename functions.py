@@ -135,7 +135,7 @@ def gameover(score):
         window.blit(fondt, (0,0))
         title=text_format("Game Over", font2, 91, white)
         title2=text_format("Game Over", font2, 90, black)
-        Score =text_format(str(score),font2,85,pink)
+        Score =text_format(str(score),font2,80,pink)
         if select=="Retry":
             Text_Start=text_format("RETRY", font, 75, white)
         else:
@@ -151,7 +151,7 @@ def gameover(score):
         quit_r=Text_Quit.get_rect()
 
         # Main Menu Text
-        screen.blit(Score,(screen_w/2,500))
+        screen.blit(Score,(screen_w/2 - 35,500))
         screen.blit(title, (screen_w/2 - (title_r[2]/2), 80))
         screen.blit(title2, (screen_w/2 - (title2_r[2]/2)-3, 83))
         screen.blit(Text_Start, (screen_w/2 - (start_r[2]/2), 300))

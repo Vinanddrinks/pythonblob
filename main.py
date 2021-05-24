@@ -76,10 +76,9 @@ def WindowUpdate():
 
     #score
     window.blit(pg.image.load('resources/score blob.png'), (1016 , 32))
-    if trigger == 120:
-        window.blit(blob.spritesscore[blob.score1], (1170 , 35))
-        window.blit(blob.spritesscore[blob.score10], (1150 , 35))
-        window.blit(blob.spritesscore[blob.score100], (1130 , 35))
+    window.blit(blob.spritesscore[blob.score1], (1170 , 35))
+    window.blit(blob.spritesscore[blob.score10], (1150 , 35))
+    window.blit(blob.spritesscore[blob.score100], (1130 , 35))
         
 
 # End def Update
@@ -96,7 +95,7 @@ while run == True:
         counter = 0
         gameover(blob.score)
         blob.health=3
-        # reset score 
+        blob.resetscore = True
     pg.time.delay(16)
     sec = t.time()
     for event in pg.event.get():
@@ -120,8 +119,6 @@ while run == True:
             covid.trajectory()
         else:
             covids.pop(covids.index(covid))
-    if trigger < 120:
-        trigger+=1
     if invulnerability < 60:
         invulnerability += 1
     blob.mouvement()

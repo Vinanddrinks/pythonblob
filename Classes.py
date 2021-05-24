@@ -102,6 +102,7 @@ class player_entity:
         self.score = 0
         self.scorecopy = 0
         self.scorecopy2 = 0
+        self.resetscore = False
 
         self.score1 = 0
         self.score10 = 0
@@ -125,22 +126,6 @@ class player_entity:
         self.spritesscore.append(pg.image.load('resources/7.png'))
         self.spritesscore.append(pg.image.load('resources/8.png'))
         self.spritesscore.append(pg.image.load('resources/9.png'))
-
-    def score_reset(self):
-        self.score = 0
-        self.scorecopy = 0
-        self.scorecopy2 = 0
-
-        self.score1 = 0
-        self.score10 = 0
-        self.score100 = 0
-
-        self.scorelist = []
-        self.scorelist2 = []
-
-        self.countscore = 0
-        self.countscore2 = 0
-        self.spritesscore = []
 
 
     def mouvement(self):
@@ -254,6 +239,22 @@ class player_entity:
             self.image = pg.image.load('resources/mort2.png')
 
     def scoreblob(self):
+
+        if self.resetscore == True :
+            self.score = 0
+            self.scorecopy = 0
+            self.scorecopy2 = 0
+
+            self.score1 = 0
+            self.score10 = 0
+            self.score100 = 0
+
+            self.scorelist = []
+            self.scorelist2 = []
+
+            self.countscore = 0
+            self.countscore2 = 0
+            self.resetscore = False
 
         self.scorecopy2 = self.score
         self.scorecopy = self.scorecopy2
