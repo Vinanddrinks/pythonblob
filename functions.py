@@ -22,6 +22,7 @@ window = pg.display.set_mode((1280, 720),pg.DOUBLEBUF, 32)
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
 font = "Retro.ttf"
+font2 = "SadanaSquare.ttf"
 screen  = pg.display.set_mode((1280, 720),pg.DOUBLEBUF, 32)
 
 # Variables
@@ -80,7 +81,8 @@ def main_menu():
         # Main Menu UI
         fondt = pg.image.load('resources/FondPrincipal.png')
         window.blit(fondt, (0,0))
-        title=text_format("PROTECT LITTLE BUD", font, 90, pink)
+        title=text_format("PROTECT LITTLE BUD", font2, 91, white)
+        title2=text_format("PROTECT LITTLE BUD", font2, 90, pink)
         if select=="Start":
             Text_Start=text_format("START", font, 75, white)
         else:
@@ -91,11 +93,13 @@ def main_menu():
             Text_Quit = text_format("QUIT", font, 75, black)
 
         title_r=title.get_rect()
+        title2_r=title2.get_rect()
         start_r=Text_Start.get_rect()
         quit_r=Text_Quit.get_rect()
 
         # Main Menu Text
         screen.blit(title, (screen_w/2 - (title_r[2]/2), 80))
+        screen.blit(title2, (screen_w/2 - (title2_r[2]/2)-3, 83))
         screen.blit(Text_Start, (screen_w/2 - (start_r[2]/2), 300))
         screen.blit(Text_Quit, (screen_w/2 - (quit_r[2]/2), 360))
         pg.display.update()
