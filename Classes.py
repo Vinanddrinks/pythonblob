@@ -30,7 +30,7 @@ class player_entity:
         self.health = 3
         self.bonus = 0
 
-        #all sprites
+        #all sprites array declaration
         self.sprites0_right = []
         self.sprites0_left = []
         self.sprites1_right = []
@@ -44,7 +44,7 @@ class player_entity:
         self.actualsprites1 = self.sprites1_right
         self.actualsprites2 = self.sprites2_left
         
-        #SPRITE 0 ( normal )
+        #SPRITE series 0 ( default )
         self.sprites0_right.append(pg.image.load('resources/saut_normal_droit_0.png'))
         self.sprites0_right.append(pg.image.load('resources/saut_normal_droit_1.png'))
         self.sprites0_right.append(pg.image.load('resources/saut_normal_droit_2.png'))
@@ -59,7 +59,7 @@ class player_entity:
         self.sprites0_left.append(pg.image.load('resources/saut_normal_gauche_4.png'))
         self.sprites0_left.append(pg.image.load('resources/saut_normal_gauche_5.png'))
 
-        #SPRITE 1
+        #SPRITE series 1
         self.sprites1_right.append(pg.image.load('resources/saut_stade1_droit_0.png'))
         self.sprites1_right.append(pg.image.load('resources/saut_stade1_droit_1.png'))
         self.sprites1_right.append(pg.image.load('resources/saut_stade1_droit_2.png'))
@@ -74,7 +74,7 @@ class player_entity:
         self.sprites1_left.append(pg.image.load('resources/saut_stade1_gauche_4.png'))
         self.sprites1_left.append(pg.image.load('resources/saut_stade1_gauche_5.png'))
 
-        #SPRITE 2
+        #SPRITE series 2
         self.sprites2_right.append(pg.image.load('resources/saut_stade2_droit_0.png'))
         self.sprites2_right.append(pg.image.load('resources/saut_stade2_droit_1.png'))
         self.sprites2_right.append(pg.image.load('resources/saut_stade2_droit_2.png'))
@@ -128,7 +128,7 @@ class player_entity:
 
 
     def mouvement(self):
-        self.y += self.vely  #gerer les déplacements y
+        self.y += self.vely  #manage y movement
         keys = pg.key.get_pressed()
 
         self.currentx = self.x
@@ -171,15 +171,15 @@ class player_entity:
                     self.actualsprites2 = self.sprites2_right
 
 
-        if self.y >= 500:              #position du perso
-            self.vely = 0              #si dans le sol => remonte a 500
-            if self.y > 500:           #si sur sol vely=0 car pas de gravité
+        if self.y >= 500:              #player position
+            self.vely = 0              #if below floor level => go up to 500
+            if self.y > 500:           #if on floor --> vely=0 'cause gravity compensated by tension
                 self.y = 500
         else :
             if keys[pg.K_DOWN]:
                 self.vely = min(self.vely + 5, 100)
             else:
-                self.vely = min(self.vely + 1, 100)     #ajout de la gravité
+                self.vely = min(self.vely + 1, 100)     #gravity management
 
 
     def moveup(self):
@@ -284,27 +284,27 @@ class player_entity:
 class ennemy:
     def __init__(self):
         #variables initialisation
-        self.sprite = pg.image.load('resources/covidtest.png')
-        if r.choice([True,False]):
+        self.sprite = pg.image.load('resources/covidtest.png') #self sustained sprite (may cause memory issue and screen lag if too much ennemy on screen)
+        # below: randomized trajectory equation parameters declaraton
+        if r.choice([True,False]):#define wether it start from the right or the left of the screen
             self.x = 1200
-            self.theta = n.radians(r.randint(90,225))
+            self.theta = n.radians(r.randint(90,225)) #angle need to be in radiant (+ more easy to use with randint)
         else:
             self.x = 10
             self.theta = n.radians(r.randint(-45,90))
-        self.vi = r.randint(1200000,1600000)
         self.x_init = self.x
         self.y = r.randint(-360,0)
         self.init_height = self.y
-        self.vi = 200
+        self.vi = 200 # may seem huge but 200 pixel/sec is not much for initial |velocity|
         self.time = 0
         self.gravity = r.randint(30,60)
 
         self.ennemyrect = self.sprite.get_rect()
         #end variable initialisation
     def trajectory(self):
-        self.time += 0.045
-        self.x = self.vi*n.cos(self.theta)*self.time + self.x_init
-        self.y = self.gravity*((self.time*self.time)/2) - self.vi*n.sin(self.theta)*self.time - self.init_height
+        self.time += 0.045# time progression need to be weak due to low delay between frames actualisation (+ good indicator to manage speed)
+        self.x = self.vi*n.cos(self.theta)*self.time + self.x_init # horizontal time trajectory equation
+        self.y = self.gravity*((self.time*self.time)/2) - self.vi*n.sin(self.theta)*self.time - self.init_height #vertical time trajectory equation
     
 
 #End

@@ -1,6 +1,6 @@
 # Python Blob V2#
 # description : main ressource file for the project classes 
-# Authors : Joseph,Vincent,Anaïs
+# Authors : Joseph,Vincent,Anaïs,Léna
 
 # importation
 import pygame as pg
