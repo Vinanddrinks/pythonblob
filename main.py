@@ -29,19 +29,22 @@ window = pg.display.set_mode((1280, 720),pg.DOUBLEBUF, 32)
 pg.display.set_caption("Protect PyBlob") 
 life = pg.image.load('resources/heart.png')
 no_life = pg.image.load('resources/no_heart.png')
-blob = player_entity(40, 400)
+init_blob = player_entity(40, 400)
+blob = init_blob
 run = True
 covids = []
 jumpspam = 0
 invulnerability = 0
 slowerspawn = 0
 constante = True
+counter = 0
+trigger = 120
 #end_declaration
 
 
 # Def Update (don't touch !)
 def WindowUpdate(): 
-    global invulnerability
+    global invulnerability, trigger
     window.blit(fond,(0,0))
     for covid in covids:
         hitboxenemy = (covid.x + 15, covid.y + 15, 40, 40)
@@ -73,9 +76,10 @@ def WindowUpdate():
 
     #score
     window.blit(pg.image.load('resources/score blob.png'), (1016 , 32))
-    window.blit(blob.spritesscore[blob.score1], (1170 , 35))
-    window.blit(blob.spritesscore[blob.score10], (1150 , 35))
-    window.blit(blob.spritesscore[blob.score100], (1130 , 35))
+    if trigger == 120:
+        window.blit(blob.spritesscore[blob.score1], (1170 , 35))
+        window.blit(blob.spritesscore[blob.score10], (1150 , 35))
+        window.blit(blob.spritesscore[blob.score100], (1130 , 35))
         
 
 # End def Update
@@ -86,6 +90,13 @@ while constante == True:
 chooseSong(3)
 
 while run == True:
+    if blob.health == 0:
+        counter += 1
+    if counter == 180:
+        counter = 0
+        gameover(blob.score)
+        blob.health=3
+        # reset score 
     pg.time.delay(16)
     sec = t.time()
     for event in pg.event.get():
@@ -109,18 +120,14 @@ while run == True:
             covid.trajectory()
         else:
             covids.pop(covids.index(covid))
-        
+    if trigger < 120:
+        trigger+=1
     if invulnerability < 60:
         invulnerability += 1
-
-
-
     blob.mouvement()
     blob.moveup()
     blob.scoreblob()
-
     WindowUpdate()
+    print(blob.health)
     pg.display.update()
-    #print(blob.health)
-    #print(invulnerability)
 # END

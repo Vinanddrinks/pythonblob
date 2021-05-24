@@ -126,6 +126,22 @@ class player_entity:
         self.spritesscore.append(pg.image.load('resources/8.png'))
         self.spritesscore.append(pg.image.load('resources/9.png'))
 
+    def score_reset(self):
+        self.score = 0
+        self.scorecopy = 0
+        self.scorecopy2 = 0
+
+        self.score1 = 0
+        self.score10 = 0
+        self.score100 = 0
+
+        self.scorelist = []
+        self.scorelist2 = []
+
+        self.countscore = 0
+        self.countscore2 = 0
+        self.spritesscore = []
+
 
     def mouvement(self):
         self.y += self.vely  #manage y movement
@@ -183,6 +199,7 @@ class player_entity:
 
 
     def moveup(self):
+        global playing
         keys = pg.key.get_pressed()
         if keys[pg.K_SPACE]:
             self.Jump = True
